@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunday School: The Power to Reconcile</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #f1f5f9;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide.active { display: flex; }
+
+  /* Slide backgrounds */
+  .slide-title {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker-title {
+    background: linear-gradient(135deg, #134e4a 0%, #0f766e 50%, #134e4a 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker {
+    background: linear-gradient(135deg, #134e4a 0%, #115e59 80%, #134e4a 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-transition {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-scripture {
+    background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #1c1917 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-keyidea {
+    background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0c4a6e 100%);
+  }
+
+  .slide-video {
+    background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #1e1b4b 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-image {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .slide-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+  }
+
+  .slide-image > * { position: relative; z-index: 1; }
+
+  /* Typography */
+  h1 {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: #93c5fd;
+  }
+
+  p, li {
+    font-size: 32px;
+    line-height: 1.5;
+    color: #e2e8f0;
+  }
+
+  .subtitle {
+    font-size: 28px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .date-tag {
+    font-size: 22px;
+    color: #818cf8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .emoji-big {
+    font-size: 96px;
+    margin-bottom: 30px;
+    display: block;
+  }
+
+  .scenario-text {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 900px;
+  }
+
+  .scenario-label {
+    font-size: 24px;
+    color: #5eead4;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  blockquote {
+    font-size: 36px;
+    font-style: italic;
+    line-height: 1.5;
+    border-left: 5px solid #818cf8;
+    padding: 20px 30px;
+    max-width: 1000px;
+    color: #e2e8f0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0 12px 12px 0;
+  }
+
+  blockquote cite {
+    display: block;
+    font-size: 24px;
+    color: #94a3b8;
+    font-style: normal;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 12px 0;
+    padding-left: 40px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #818cf8;
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  .highlight {
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .accent { color: #818cf8; }
+  .accent-teal { color: #5eead4; }
+
+  .instructions {
+    font-size: 26px;
+    color: #94a3b8;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  .two-sides {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .two-sides .text-side { flex: 1; }
+  .two-sides .image-side {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .two-sides .image-side img {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .video-thumb {
+    display: block;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    display: block;
+  }
+
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.2s;
+  }
+
+  .play-btn:hover { background: rgba(0,0,0,0.15); }
+
+  .play-btn svg {
+    width: 80px;
+    height: 80px;
+    fill: white;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  }
+
+  .video-label {
+    font-size: 24px;
+    color: #94a3b8;
+    margin-top: 20px;
+  }
+
+  /* Slide counter */
+  #counter {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-size: 18px;
+    color: #475569;
+    z-index: 100;
+    font-weight: 600;
+  }
+
+  /* Fullscreen hint */
+  #hint {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    font-size: 16px;
+    color: #334155;
+    z-index: 100;
+  }
+
+  /* Move instructions */
+  .move-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 30px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .move-labels .yes { color: #4ade80; }
+  .move-labels .no { color: #f87171; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide slide-title active">
+  <div class="date-tag">ECC Redmond | March 8, 2026</div>
+  <h1>The Power to Reconcile</h1>
+  <p class="subtitle">Sunday School — Middle Schoolers (Grades 6–8)</p>
+  <p class="subtitle">Romans 5:1-11</p>
+</div>
+
+<!-- SLIDE 2: Icebreaker Title -->
+<div class="slide slide-icebreaker-title">
+  <span class="emoji-big">🎮</span>
+  <h1>Would You Do It?</h1>
+  <p class="subtitle" style="max-width:700px;">I'll read a scenario. Move to the LEFT side for <span class="accent-teal">YES</span>, RIGHT side for <span style="color:#f87171;">NO WAY</span>.</p>
+  <div class="move-labels">
+    <span class="yes">⬅ YES, I'd do it</span>
+    <span class="no">NO WAY ➡</span>
+  </div>
+</div>
+
+<!-- SLIDE 3: Scenario 1 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Scenario 1</div>
+  <span class="emoji-big">🎒</span>
+  <div class="scenario-text">Would you give up your phone for an <span class="highlight">entire month</span> to help a friend pass a class?</div>
+</div>
+
+<!-- SLIDE 4: Scenario 2 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Scenario 2</div>
+  <span class="emoji-big">🍕</span>
+  <div class="scenario-text">Would you eat lunch <span class="highlight">alone every day for a week</span> so a new kid wouldn't have to?</div>
+</div>
+
+<!-- SLIDE 5: Scenario 3 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Scenario 3</div>
+  <span class="emoji-big">💰</span>
+  <div class="scenario-text">Would you give away your <span class="highlight">entire savings</span> to pay for someone else's medical bill?</div>
+</div>
+
+<!-- SLIDE 6: Scenario 4 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Scenario 4</div>
+  <span class="emoji-big">🏃</span>
+  <div class="scenario-text">Would you <span class="highlight">take the blame</span> for something you didn't do to protect your best friend?</div>
+</div>
+
+<!-- SLIDE 7: Scenario 5 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Scenario 5</div>
+  <span class="emoji-big">🦸</span>
+  <div class="scenario-text">Would you <span class="highlight">risk your life</span> to save a stranger?</div>
+</div>
+
+<!-- SLIDE 8: Scenario 6 (the key one) -->
+<div class="slide slide-icebreaker" style="background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #7f1d1d 100%);">
+  <div class="scenario-label" style="color:#fca5a5;">Scenario 6 — The Hard One</div>
+  <span class="emoji-big">💔</span>
+  <div class="scenario-text">Would you risk your life to save someone who <span class="highlight">hates you</span> and has been <span class="highlight">mean to you</span>?</div>
+</div>
+
+<!-- SLIDE 9: Icebreaker Transition -->
+<div class="slide slide-transition">
+  <h2>That last one is hard, right?</h2>
+  <p style="font-size:40px; margin-top:20px; max-width:900px;">Who would actually do that?</p>
+  <p style="font-size:48px; margin-top:40px; font-weight:900; color:#fbbf24;">That's exactly what Jesus did for us.</p>
+  <p class="instructions" style="margin-top:40px; max-width:800px;">"In Sunday's sermon, we heard about how God reconciled us to Himself — not when we were good, but when we were still His enemies."</p>
+</div>
+
+<!-- SLIDE 10: Scripture -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1920&q=80');">
+  <h3 style="color:#fbbf24;">Key Verse</h3>
+  <blockquote>
+    "But God demonstrates his own love toward us in that while we were still sinners, Christ died for us."
+    <cite>— Romans 5:8</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 11: Key Idea 1 Title -->
+<div class="slide slide-keyidea">
+  <h3>Key Idea 1</h3>
+  <h2>Reconciliation Is One-Sided</h2>
+  <ul>
+    <li>When friends fight, <span class="highlight">both</span> usually have to apologize</li>
+    <li>With God, the broken relationship was <span class="highlight">entirely our fault</span></li>
+    <li>God didn't wait for us to fix ourselves — He made the <span class="highlight">first and only move</span> by sending Jesus</li>
+    <li>Reconciliation = the relationship is <span class="highlight">fully repaired</span>, not because we earned it</li>
+  </ul>
+</div>
+
+<!-- SLIDE 12: Key Idea 1 — Illustration -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0c4a6e 100%);">
+  <h3>Think About It</h3>
+  <h2 style="font-size:40px;">In the Old Testament...</h2>
+  <ul>
+    <li>Moses had to be <span class="highlight">shielded</span> from God's full glory</li>
+    <li>Only the high priest could enter the Most Holy Place — <span class="highlight">once a year</span></li>
+    <li>They tied a <span class="highlight">rope around him</span> in case he didn't survive</li>
+  </ul>
+  <p style="font-size:36px; margin-top:30px; color:#fbbf24; font-weight:700;">Now, because of Jesus, we can approach God freely.</p>
+</div>
+
+<!-- SLIDE 13: Key Idea 2 Title -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #6b2163 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">Key Idea 2</h3>
+  <h2>The Depth of God's Love</h2>
+  <ul>
+    <li style="color:#e2e8f0;"><span class="highlight">Romans 5:7</span> — Maybe someone would die for a really good person</li>
+    <li style="color:#e2e8f0;"><span class="highlight">Romans 5:8</span> — Jesus died for us when we were <span style="color:#f87171; font-weight:700;">not good at all</span></li>
+    <li style="color:#e2e8f0;">Knowing we would <span class="highlight">continue to sin</span>, Christ still died for us</li>
+  </ul>
+</div>
+
+<!-- SLIDE 14: Hero's Sacrifice -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #581c87 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">The Hero's Sacrifice in Movies</h3>
+  <div class="two-sides">
+    <div class="text-side">
+      <ul>
+        <li>Avengers: Endgame</li>
+        <li>The Lion King</li>
+        <li>Big Hero 6</li>
+        <li>Saving Private Ryan</li>
+      </ul>
+      <p style="font-size:30px; margin-top:24px; color:#f0abfc;">In every story, the survivors <span class="highlight">change their lives</span> because of the sacrifice.</p>
+      <p style="font-size:34px; margin-top:16px; font-weight:700; color:#fbbf24;">Are we living differently because of what Jesus did?</p>
+    </div>
+    <div class="image-side">
+      <img src="https://img.youtube.com/vi/YfYbwtPjPx4/maxresdefault.jpg" alt="Sermon" style="opacity:0.85;">
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 15: Key Idea 3 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">Key Idea 3</h3>
+  <h2>Suffering Builds Hope</h2>
+  <p style="font-size:40px; text-align:center; margin: 30px 0; font-weight:700; color:#fbbf24;">
+    Suffering → Perseverance → Character → Hope
+  </p>
+  <ul>
+    <li>Muscles get stronger only when they're <span class="highlight">pushed past comfort</span></li>
+    <li>God uses hard things to <span class="highlight">stretch our faith</span> and grow us</li>
+    <li>This doesn't mean God wants us to be miserable — He's <span class="highlight">building something in us</span></li>
+  </ul>
+</div>
+
+<!-- SLIDE 16: Microscope vs Telescope -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #15803d 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">A Change of Perspective</h3>
+  <div style="display:flex; gap:60px; align-items:center; justify-content:center; margin-top:20px;">
+    <div style="text-align:center;">
+      <span style="font-size:80px;">🔬</span>
+      <h2 style="font-size:36px; color:#f87171; margin-top:12px;">Microscope</h2>
+      <p style="font-size:28px; max-width:350px;">Makes <span class="highlight">small problems</span> look huge</p>
+    </div>
+    <div style="text-align:center; font-size:64px; color:#475569;">→</div>
+    <div style="text-align:center;">
+      <span style="font-size:80px;">🔭</span>
+      <h2 style="font-size:36px; color:#4ade80; margin-top:12px;">Telescope</h2>
+      <p style="font-size:28px; max-width:350px;">Shows how <span class="highlight">massive God's love</span> really is</p>
+    </div>
+  </div>
+  <p style="font-size:32px; text-align:center; margin-top:40px; color:#fbbf24; font-weight:700;">Stop magnifying your problems. Start seeing God's love at full size.</p>
+</div>
+
+<!-- SLIDE 17: Video -->
+<div class="slide slide-video">
+  <h3 style="color:#c4b5fd;">Recommended Video (8 min)</h3>
+  <h2 style="font-size:36px; margin-bottom:30px;">BibleProject: Romans 5-16 Overview</h2>
+  <a href="https://www.youtube.com/watch?v=0SVTl4Xa5fY" target="_blank" class="video-thumb" onclick="event.stopPropagation();">
+    <img src="https://img.youtube.com/vi/0SVTl4Xa5fY/maxresdefault.jpg" alt="BibleProject Romans 5-16">
+    <div class="play-btn">
+      <svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+    </div>
+  </a>
+  <p class="video-label">Click to open in YouTube — covers Romans 5-16 themes including reconciliation, suffering, and hope</p>
+</div>
+
+<!-- SLIDE 18: Key Takeaway -->
+<div class="slide slide-transition">
+  <h3 style="color:#fbbf24; font-size:28px; letter-spacing:2px; text-transform:uppercase;">Key Takeaway</h3>
+  <blockquote style="border-left-color:#fbbf24; max-width:1000px; font-size:38px;">
+    "When we can witness the depth of God's love, we can handle true suffering in life — because we are reconciled to God for all time."
+  </blockquote>
+</div>
+
+<!-- SLIDE 19: Transition to Small Groups -->
+<div class="slide slide-title">
+  <span class="emoji-big">💬</span>
+  <h1>Small Group Time</h1>
+  <p class="subtitle">Split into groups of 4-5 with a leader</p>
+  <p style="font-size:28px; color:#818cf8; margin-top:20px;">Share honestly. Ask questions. Listen to each other.</p>
+</div>
+
+<!-- Counter -->
+<div id="counter"></div>
+<div id="hint">Press F for fullscreen | ← → to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); showSlide(current - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    showSlide(current + 1);
+  });
+</script>
+</body>
+</html>
