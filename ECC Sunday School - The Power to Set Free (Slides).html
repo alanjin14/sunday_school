@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunday School: The Power to Set Free</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #f1f5f9;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide.active { display: flex; }
+
+  /* Slide backgrounds */
+  .slide-title {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker-title {
+    background: linear-gradient(135deg, #134e4a 0%, #0f766e 50%, #134e4a 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker {
+    background: linear-gradient(135deg, #134e4a 0%, #115e59 80%, #134e4a 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-transition {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-scripture {
+    background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #1c1917 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-keyidea {
+    background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0c4a6e 100%);
+  }
+
+  .slide-video {
+    background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #1e1b4b 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-image {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .slide-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+  }
+
+  .slide-image > * { position: relative; z-index: 1; }
+
+  /* Typography */
+  h1 {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: #93c5fd;
+  }
+
+  p, li {
+    font-size: 32px;
+    line-height: 1.5;
+    color: #e2e8f0;
+  }
+
+  .subtitle {
+    font-size: 28px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .date-tag {
+    font-size: 22px;
+    color: #818cf8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .emoji-big {
+    font-size: 96px;
+    margin-bottom: 30px;
+    display: block;
+  }
+
+  .scenario-text {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 900px;
+  }
+
+  .scenario-label {
+    font-size: 24px;
+    color: #5eead4;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  blockquote {
+    font-size: 36px;
+    font-style: italic;
+    line-height: 1.5;
+    border-left: 5px solid #818cf8;
+    padding: 20px 30px;
+    max-width: 1000px;
+    color: #e2e8f0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0 12px 12px 0;
+  }
+
+  blockquote cite {
+    display: block;
+    font-size: 24px;
+    color: #94a3b8;
+    font-style: normal;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 12px 0;
+    padding-left: 40px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #818cf8;
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  .highlight {
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .accent { color: #818cf8; }
+  .accent-teal { color: #5eead4; }
+
+  .instructions {
+    font-size: 26px;
+    color: #94a3b8;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  .two-sides {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .two-sides .text-side { flex: 1; }
+  .two-sides .image-side {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .two-sides .image-side img {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .video-thumb {
+    display: block;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    display: block;
+  }
+
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.2s;
+  }
+
+  .play-btn:hover { background: rgba(0,0,0,0.15); }
+
+  .play-btn svg {
+    width: 80px;
+    height: 80px;
+    fill: white;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  }
+
+  .video-label {
+    font-size: 24px;
+    color: #94a3b8;
+    margin-top: 20px;
+  }
+
+  .freedom-item {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 800px;
+  }
+
+  .freedom-number {
+    font-size: 80px;
+    font-weight: 900;
+    color: #5eead4;
+    margin-bottom: 10px;
+  }
+
+  /* Slide counter */
+  #counter {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-size: 18px;
+    color: #475569;
+    z-index: 100;
+    font-weight: 600;
+  }
+
+  /* Fullscreen hint */
+  #hint {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    font-size: 16px;
+    color: #334155;
+    z-index: 100;
+  }
+
+  .chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+  }
+
+  .chain-item {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fbbf24;
+    background: rgba(251,191,36,0.1);
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: 2px solid rgba(251,191,36,0.3);
+  }
+
+  .chain-arrow {
+    font-size: 36px;
+    color: #475569;
+  }
+
+  .fruit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+  }
+
+  .fruit-col h3 {
+    margin-bottom: 20px;
+  }
+
+  .fruit-col ul li {
+    font-size: 28px;
+    padding: 8px 0 8px 36px;
+  }
+
+  .fruit-col ul li::before {
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide slide-title active">
+  <div class="date-tag">ECC Redmond | March 15, 2026</div>
+  <h1>The Power to Set Free</h1>
+  <p class="subtitle">Sunday School — Middle Schoolers (Grades 6–8)</p>
+  <p class="subtitle">Romans 8:1-4</p>
+</div>
+
+<!-- SLIDE 2: Icebreaker Title -->
+<div class="slide slide-icebreaker-title">
+  <span class="emoji-big">🔓</span>
+  <h1>Escape Room Rankings</h1>
+  <p class="subtitle" style="max-width:800px;">You've been locked in a room for an <span class="highlight">ENTIRE YEAR</span>. No phone. No Wi-Fi. No choosing your own food. Total lockdown.</p>
+  <p style="font-size:40px; color:#5eead4; font-weight:700; margin-top:30px;">The door opens. You're FREE.</p>
+  <p style="font-size:36px; color:#fbbf24; font-weight:700; margin-top:20px;">What are the FIRST 3 things you do?!</p>
+  <p class="instructions">You have 30 seconds. GO!</p>
+</div>
+
+<!-- SLIDE 3: Reveal intro -->
+<div class="slide slide-icebreaker" style="background: linear-gradient(135deg, #134e4a 0%, #0d9488 50%, #134e4a 100%);">
+  <span class="emoji-big">📊</span>
+  <div class="scenario-text">OK let's see how your answers stack up against <span class="highlight">REAL DATA</span> from released prisoners!</div>
+</div>
+
+<!-- SLIDE 4: Freedom 1 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Real Answer #1</div>
+  <span class="emoji-big">🏠</span>
+  <div class="freedom-item">Spending time with <span class="highlight">family</span></div>
+</div>
+
+<!-- SLIDE 5: Freedom 2 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Real Answer #2</div>
+  <span class="emoji-big">🍔</span>
+  <div class="freedom-item">Eating what you want, <span class="highlight">where you want</span></div>
+  <p class="instructions">First stop = favorite restaurant or a home-cooked meal</p>
+</div>
+
+<!-- SLIDE 6: Freedom 3 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Real Answer #3</div>
+  <span class="emoji-big">🚿</span>
+  <div class="freedom-item">Taking a long, <span class="highlight">private shower</span></div>
+  <p class="instructions">No joke — this is a huge deal when you haven't had privacy</p>
+</div>
+
+<!-- SLIDE 7: Freedom 4 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Real Answer #4</div>
+  <span class="emoji-big">👕</span>
+  <div class="freedom-item">Picking out clothes that are actually <span class="highlight">YOUR style</span></div>
+</div>
+
+<!-- SLIDE 8: Freedom 5 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Real Answer #5</div>
+  <span class="emoji-big">🌳</span>
+  <div class="freedom-item">Just being <span class="highlight">alone outside</span> somewhere</div>
+</div>
+
+<!-- SLIDE 9: Icebreaker Transition -->
+<div class="slide slide-transition">
+  <h2 style="font-size:52px;">Plot twist...</h2>
+  <p style="font-size:36px; margin-top:20px; max-width:900px; color:#e2e8f0;">The Bible says that before we knew Christ, we were <span class="highlight">ALL prisoners</span>. Not locked in a building — but locked up by sin and death.</p>
+  <p style="font-size:44px; margin-top:40px; font-weight:900; color:#fbbf24;">Last week's sermon was about how Jesus literally broke us out.</p>
+</div>
+
+<!-- SLIDE 9: Scripture -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1501526029524-a8ea952b15be?w=1920&q=80');">
+  <h3 style="color:#fbbf24;">Key Verse</h3>
+  <blockquote>
+    "There is therefore now no condemnation for those who are in Christ Jesus. For the law of the Spirit of life has set you free in Christ Jesus from the law of sin and death."
+    <cite>— Romans 8:1-2</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 11: Sermon Outline -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);">
+  <h3 style="color:#818cf8;">Last Week's Sermon</h3>
+  <h2 style="font-size:40px;">The Power to Set Free</h2>
+  <ul>
+    <li style="font-size:36px;"><span class="highlight">Part 1:</span> The Law of Sin and Death Defeated</li>
+    <li style="font-size:36px;"><span class="highlight">Part 2:</span> The Prisoners Freed</li>
+    <li style="font-size:36px;"><span class="highlight">Part 3:</span> The Life in the Spirit</li>
+  </ul>
+</div>
+
+<!-- SLIDE 12: Key Idea 1 Title -->
+<div class="slide slide-keyidea">
+  <h3>Key Idea 1</h3>
+  <h2>Boss Battle: Christ vs. the Grave Lord</h2>
+  <ul>
+    <li>The final boss — <span class="highlight">the Grave Lord</span> (sin & death) — was undefeated</li>
+    <li>Jesus took off His royal armor, <span class="highlight">disguised Himself</span> as an ordinary soldier</li>
+    <li>He grabbed the Grave Lord and <span class="highlight">hurled them both off a cliff</span> into the sea</li>
+    <li>After 3 days, Jesus rose — because He has the <span class="highlight">power of life</span> in Him</li>
+    <li>He returned to the enemy's prison camp and <span class="highlight">freed every captive</span></li>
+  </ul>
+</div>
+
+<!-- SLIDE 12: Three Victories -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0c4a6e 100%);">
+  <h3>Three Things Changed for Us</h3>
+  <div class="chain">
+    <div class="chain-item">⚔️ The war is WON</div>
+  </div>
+  <div class="chain">
+    <div class="chain-item">🔓 The prison doors are OPEN</div>
+  </div>
+  <div class="chain">
+    <div class="chain-item">📜 The contract is CANCELED</div>
+  </div>
+  <p style="font-size:30px; margin-top:30px; color:#93c5fd;">We don't owe sin anything anymore.</p>
+</div>
+
+<!-- SLIDE 14: Key Idea 2 Title -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #6b2163 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">Key Idea 2</h3>
+  <h2>The Ultimate Swap</h2>
+  <ul>
+    <li style="color:#e2e8f0;">From <span class="highlight">A Tale of Two Cities</span> — Darnay is sentenced to die for his family's crimes</li>
+    <li style="color:#e2e8f0;">His look-alike Carton sneaks into prison, <span class="highlight">drugs him, swaps clothes</span></li>
+    <li style="color:#e2e8f0;">Carton — totally <span class="highlight">innocent</span> — dies in Darnay's place at the guillotine</li>
+    <li style="color:#e2e8f0;">That's what Jesus did: He took our place and gave us <span class="highlight">His freedom</span></li>
+  </ul>
+</div>
+
+<!-- SLIDE 14: 2 Cor 5:21 -->
+<div class="slide slide-scripture" style="background: linear-gradient(135deg, #4a1942 0%, #581c87 50%, #4a1942 100%);">
+  <blockquote style="border-left-color: #f0abfc;">
+    "For our sake God made him to be sin who knew no sin, so that in him we might become the righteousness of God."
+    <cite>— 2 Corinthians 5:21</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 16: Key Idea 3 Title -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">Key Idea 3</h3>
+  <h2>Don't Go Back to Jail</h2>
+  <ul>
+    <li>Jesus didn't break us out so we'd live like <span class="highlight">escaped criminals</span></li>
+    <li>He freed us to live a <span class="highlight">completely new life</span> in His Spirit</li>
+    <li>But sometimes we <span class="highlight">voluntarily walk back into prison</span>...</li>
+    <li>We start serving <span class="highlight">false masters</span> that promise freedom but deliver condemnation</li>
+  </ul>
+</div>
+
+<!-- SLIDE 17: False Masters -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #15803d 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">False Masters = Terrible Bosses</h3>
+  <h2 style="font-size:38px;">They reward you when you win, crush you when you don't</h2>
+  <ul>
+    <li>📱 <span class="highlight">Social Media</span> — likes = great, left on read = crushed</li>
+    <li>📊 <span class="highlight">Grades</span> — A = amazing, bad score = "I'm a failure"</li>
+    <li>👟 <span class="highlight">Appearance</span> — new outfit = confidence, bad hair day = hide</li>
+    <li>🏆 <span class="highlight">Being the Best</span> — winning = freedom, losing = worthless</li>
+  </ul>
+  <p style="font-size:28px; margin-top:24px; color:#86efac;">None of these things <span class="highlight">forgive you</span> when you fail. Only Jesus does.</p>
+</div>
+
+<!-- SLIDE 17: Tim Keller Quote -->
+<div class="slide slide-transition">
+  <blockquote style="border-left-color:#fbbf24; max-width:1000px; font-size:34px;">
+    "Everybody has to live for something. Whatever that something is becomes 'Lord of your life,' whether you think of it that way or not. Jesus is the only Lord who, if you receive him, will fulfill you completely, and, if you fail him, will forgive you eternally."
+    <cite>— Tim Keller</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 19: Two Paths -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%);">
+  <h3 style="color:#fbbf24;">Which life do you want?</h3>
+  <div class="fruit-grid">
+    <div class="fruit-col">
+      <h3 style="color:#f87171; font-size:28px;">Serving a False Master 😩</h3>
+      <ul>
+        <li style="color:#fca5a5;">Can't stop replaying mistakes</li>
+        <li style="color:#fca5a5;">"I'm so stupid" self-talk</li>
+        <li style="color:#fca5a5;">Imagining everyone judges you</li>
+        <li style="color:#fca5a5;">Judging others by performance</li>
+      </ul>
+    </div>
+    <div class="fruit-col">
+      <h3 style="color:#86efac; font-size:28px;">Walking in Christ's Spirit 🔥</h3>
+      <ul>
+        <li style="color:#bbf7d0;">Love</li>
+        <li style="color:#bbf7d0;">Joy</li>
+        <li style="color:#bbf7d0;">Peace</li>
+        <li style="color:#bbf7d0;">Patience</li>
+        <li style="color:#bbf7d0;">Kindness, Goodness</li>
+        <li style="color:#bbf7d0;">Faithfulness</li>
+        <li style="color:#bbf7d0;">Gentleness, Self-control</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 19: Video -->
+<div class="slide slide-video">
+  <h3 style="color:#c4b5fd;">Recommended Video (8 min)</h3>
+  <h2 style="font-size:36px; margin-bottom:30px;">BibleProject: Romans 5–16 Overview</h2>
+  <a href="https://www.youtube.com/watch?v=0SVTl4Xa5fY" target="_blank" class="video-thumb" onclick="event.stopPropagation();">
+    <img src="https://img.youtube.com/vi/0SVTl4Xa5fY/maxresdefault.jpg" alt="BibleProject Romans 5-16">
+    <div class="play-btn">
+      <svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+    </div>
+  </a>
+  <p class="video-label">Click to open in YouTube — covers Romans 5–16 themes including freedom from condemnation</p>
+</div>
+
+<!-- SLIDE 21: Key Takeaway -->
+<div class="slide slide-transition">
+  <h3 style="color:#fbbf24; font-size:28px; letter-spacing:2px; text-transform:uppercase;">The Bottom Line</h3>
+  <blockquote style="border-left-color:#fbbf24; max-width:1000px; font-size:42px;">
+    "There is therefore now <span class="highlight">NO</span> condemnation for those who are in Christ Jesus."
+  </blockquote>
+  <p style="font-size:36px; margin-top:30px; color:#e2e8f0;">Not some. Not a little.<br><span class="highlight" style="font-size:48px;">NONE. ZERO. NADA.</span></p>
+</div>
+
+<!-- SLIDE 22: Transition to Small Groups -->
+<div class="slide slide-title">
+  <span class="emoji-big">💬</span>
+  <h1>Small Group Time</h1>
+  <p class="subtitle">Split into groups of 4-5 with a leader</p>
+  <p style="font-size:28px; color:#818cf8; margin-top:20px;">No judgment zone. Share honestly. Ask questions. Listen to each other.</p>
+</div>
+
+<!-- Counter -->
+<div id="counter"></div>
+<div id="hint">Press F for fullscreen | ← → to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); showSlide(current - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    showSlide(current + 1);
+  });
+</script>
+</body>
+</html>

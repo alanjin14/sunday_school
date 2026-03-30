@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunday School: Becoming a Living Sacrifice</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #f1f5f9;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide.active { display: flex; }
+
+  /* Slide backgrounds */
+  .slide-title {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker-title {
+    background: linear-gradient(135deg, #134e4a 0%, #0f766e 50%, #134e4a 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker {
+    background: linear-gradient(135deg, #134e4a 0%, #115e59 80%, #134e4a 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-transition {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-scripture {
+    background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #1c1917 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-keyidea {
+    background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0c4a6e 100%);
+  }
+
+  .slide-video {
+    background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #1e1b4b 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-image {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .slide-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+  }
+
+  .slide-image > * { position: relative; z-index: 1; }
+
+  /* Typography */
+  h1 {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: #93c5fd;
+  }
+
+  p, li {
+    font-size: 32px;
+    line-height: 1.5;
+    color: #e2e8f0;
+  }
+
+  .subtitle {
+    font-size: 28px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .date-tag {
+    font-size: 22px;
+    color: #818cf8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .emoji-big {
+    font-size: 96px;
+    margin-bottom: 30px;
+    display: block;
+  }
+
+  .scenario-text {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 900px;
+  }
+
+  .scenario-label {
+    font-size: 24px;
+    color: #5eead4;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  blockquote {
+    font-size: 36px;
+    font-style: italic;
+    line-height: 1.5;
+    border-left: 5px solid #818cf8;
+    padding: 20px 30px;
+    max-width: 1000px;
+    color: #e2e8f0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0 12px 12px 0;
+  }
+
+  blockquote cite {
+    display: block;
+    font-size: 24px;
+    color: #94a3b8;
+    font-style: normal;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 12px 0;
+    padding-left: 40px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #818cf8;
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  .highlight {
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .accent { color: #818cf8; }
+  .accent-teal { color: #5eead4; }
+
+  .instructions {
+    font-size: 26px;
+    color: #94a3b8;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  .two-sides {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .two-sides .text-side { flex: 1; }
+  .two-sides .image-side {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .two-sides .image-side img {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .video-thumb {
+    display: block;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    display: block;
+  }
+
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.2s;
+  }
+
+  .play-btn:hover { background: rgba(0,0,0,0.15); }
+
+  .play-btn svg {
+    width: 80px;
+    height: 80px;
+    fill: white;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  }
+
+  .video-label {
+    font-size: 24px;
+    color: #94a3b8;
+    margin-top: 20px;
+  }
+
+  .surrender-item {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 800px;
+  }
+
+  .surrender-number {
+    font-size: 80px;
+    font-weight: 900;
+    color: #5eead4;
+    margin-bottom: 10px;
+  }
+
+  .chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+  }
+
+  .chain-item {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fbbf24;
+    background: rgba(251,191,36,0.1);
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: 2px solid rgba(251,191,36,0.3);
+  }
+
+  .chain-arrow {
+    font-size: 36px;
+    color: #475569;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+  }
+
+  .stat-item {
+    background: rgba(255,255,255,0.05);
+    padding: 20px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stat-number {
+    font-size: 40px;
+    font-weight: 900;
+    color: #fbbf24;
+  }
+
+  .stat-label {
+    font-size: 22px;
+    color: #94a3b8;
+    margin-top: 4px;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+  }
+
+  .compare-col h3 {
+    margin-bottom: 20px;
+  }
+
+  .compare-col ul li {
+    font-size: 28px;
+    padding: 8px 0 8px 36px;
+  }
+
+  .compare-col ul li::before {
+    font-size: 24px;
+  }
+
+  /* Slide counter */
+  #counter {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-size: 18px;
+    color: #475569;
+    z-index: 100;
+    font-weight: 600;
+  }
+
+  /* Fullscreen hint */
+  #hint {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    font-size: 16px;
+    color: #334155;
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide slide-title active">
+  <div class="date-tag">ECC Redmond | March 22, 2026</div>
+  <h1>Becoming a Living Sacrifice</h1>
+  <p class="subtitle">Sunday School — Middle Schoolers (Grades 6–8)</p>
+  <p class="subtitle">Romans 12:1-8</p>
+</div>
+
+<!-- SLIDE 2: Icebreaker Title -->
+<div class="slide slide-icebreaker-title">
+  <span class="emoji-big">🎰</span>
+  <h1>Lottery Life</h1>
+  <p class="subtitle" style="max-width:800px;">A poll from <span class="highlight">Philadelphia</span> asked: You just won <span class="highlight">$100 MILLION</span>. You never have to work again. No homework. No chores. Nobody can tell you what to do.</p>
+  <p style="font-size:40px; color:#5eead4; font-weight:700; margin-top:30px;">Total freedom.</p>
+  <p style="font-size:36px; color:#fbbf24; font-weight:700; margin-top:20px;">What are the TOP 3 things you'd do with your life?</p>
+  <p class="instructions">You have 30 seconds. GO!</p>
+</div>
+
+<!-- SLIDE 3: Reveal intro -->
+<div class="slide slide-icebreaker" style="background: linear-gradient(135deg, #134e4a 0%, #0d9488 50%, #134e4a 100%);">
+  <span class="emoji-big">📊</span>
+  <div class="scenario-text">Let's see how your answers stack up against a <span class="highlight">REAL POLL</span> from Philadelphia!</div>
+</div>
+
+<!-- SLIDE 4: Lottery 1 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Poll Answer #1</div>
+  <span class="emoji-big">🌍</span>
+  <div class="surrender-item"><span class="highlight">Travel the world</span></div>
+</div>
+
+<!-- SLIDE 5: Lottery 2 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Poll Answer #2</div>
+  <span class="emoji-big">💳</span>
+  <div class="surrender-item"><span class="highlight">Pay off all debts</span></div>
+</div>
+
+<!-- SLIDE 6: Lottery 3 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Poll Answer #3</div>
+  <span class="emoji-big">🎨</span>
+  <div class="surrender-item">Become an <span class="highlight">artist</span></div>
+</div>
+
+<!-- SLIDE 7: Lottery 4 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Poll Answer #4</div>
+  <span class="emoji-big">📖</span>
+  <div class="surrender-item">Write a <span class="highlight">book</span></div>
+</div>
+
+<!-- SLIDE 8: Lottery 5 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Poll Answer #5</div>
+  <span class="emoji-big">🎮</span>
+  <div class="surrender-item">Play video games <span class="highlight">full time</span></div>
+  <p class="instructions">Pro gamer status — Elder Elton said "this might ring true to some of the youth here"</p>
+</div>
+
+<!-- SLIDE 9: Transition — Spiritual Lottery -->
+<div class="slide slide-transition">
+  <h2 style="font-size:44px;">We've won the SPIRITUAL lottery.</h2>
+  <p style="font-size:34px; margin-top:20px; max-width:1000px; color:#e2e8f0;">Jesus <span class="highlight">paid off ALL our debts</span>. Last week, Minister Ryan preached about our freedom from condemnation (Romans 8).</p>
+  <p style="font-size:32px; margin-top:30px; max-width:1000px; color:#e2e8f0;">A lot of Christians think: <span class="accent-teal">"Once I'm saved, that's it! I'm on Easy Street until heaven."</span></p>
+  <p style="font-size:32px; margin-top:20px; max-width:1000px; color:#e2e8f0;">But there are <span class="highlight">16 chapters</span> in Romans. If salvation was all there was, it would end at chapter 11.</p>
+  <p style="font-size:40px; margin-top:30px; font-weight:900; color:#fbbf24;">So what are you going to do with your freedom?</p>
+</div>
+
+<!-- SLIDE 10: Scripture Romans 12:1 -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1920&q=80');">
+  <h3 style="color:#fbbf24;">Key Verse</h3>
+  <blockquote>
+    "Therefore, I urge you, brothers and sisters, in view of God's mercy, to offer your bodies as a living sacrifice, holy and pleasing to God — this is your true and proper worship."
+    <cite>— Romans 12:1</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 11: Romans 12:2 -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=1920&q=80');">
+  <blockquote>
+    "Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God's will is — his good, pleasing and perfect will."
+    <cite>— Romans 12:2</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 12: Sermon Outline -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);">
+  <h3 style="color:#818cf8;">Last Week's Sermon</h3>
+  <h2 style="font-size:40px;">Becoming a Living Sacrifice</h2>
+  <ul>
+    <li style="font-size:36px;"><span class="highlight">Part 1:</span> What is a Living Sacrifice?</li>
+    <li style="font-size:36px;"><span class="highlight">Part 2:</span> Three Choices to Surrender</li>
+    <li style="font-size:36px;"><span class="highlight">Part 3:</span> True Worship = Service</li>
+  </ul>
+</div>
+
+<!-- SLIDE 13: Key Idea 1 — Oxymoron -->
+<div class="slide slide-keyidea">
+  <h3>Key Idea 1</h3>
+  <h2>What Is a Living Sacrifice?</h2>
+  <p style="font-size:34px; color:#fbbf24; font-weight:700; margin-bottom:20px;">"Living sacrifice" is an OXYMORON!</p>
+  <ul>
+    <li>In the OT, when you sacrifice something, it's <span class="highlight">DEAD</span>. Pigeons dead. Rams dead. Goats dead.</li>
+    <li><span class="highlight">Living</span> = alive in God because of Christ (faith, not works!)</li>
+    <li><span class="highlight">Sacrifice</span> = giving yourself FULLY to God — no compartmentalizing</li>
+    <li>NOT reintroducing OT sacrifices. Jesus already paid for sins — that is <span class="highlight">DONE</span>.</li>
+  </ul>
+</div>
+
+<!-- SLIDE 14: Keller Quote -->
+<div class="slide slide-transition">
+  <blockquote style="border-left-color:#fbbf24; max-width:1000px; font-size:34px;">
+    "To live a Christian life, you're not living a Christian life, unless you put to death the idea that you have a right to live as you choose."
+    <cite>— Timothy Keller</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 15: Key Idea 2 Title -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #6b2163 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">Key Idea 2</h3>
+  <h2>Three Choices to Surrender</h2>
+  <p style="font-size:32px; color:#e2e8f0; max-width:800px; text-align:center; margin:0 auto;">Becoming a living sacrifice means handing over <span class="highlight">three big choices</span> to God...</p>
+</div>
+
+<!-- SLIDE 16: Surrender 1 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #581c87 50%, #4a1942 100%);">
+  <div class="surrender-number">1</div>
+  <div class="surrender-item" style="color:#f0abfc;">I'm letting God choose what is <span class="highlight">right and wrong</span></div>
+  <p style="font-size:30px; margin-top:30px; color:#e2e8f0; max-width:800px;">"Do not conform to the pattern of this world"</p>
+  <ul style="margin-top:20px;">
+    <li>If God told you that you couldn't <span class="highlight">lie anymore</span> — would that cramp your lifestyle?</li>
+    <li>Example: parents lying about their kid's age for a discount</li>
+    <li>As Christians: we trust God's wisdom to define right and wrong</li>
+  </ul>
+</div>
+
+<!-- SLIDE 17: Surrender 2 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #7c2d8e 50%, #4a1942 100%);">
+  <div class="surrender-number">2</div>
+  <div class="surrender-item" style="color:#f0abfc;">I'm letting God choose <span class="highlight">who I'm becoming</span></div>
+  <p style="font-size:30px; margin-top:30px; color:#e2e8f0; max-width:800px;">"Be transformed by the renewing of your mind"</p>
+  <ul style="margin-top:20px;">
+    <li>God changes you from the <span class="highlight">inside out</span> — character, heart, perspective</li>
+    <li>Transformation = becoming more like <span class="highlight">Christ</span></li>
+    <li>The CBE study shows what happens when you let God's Word transform you...</li>
+  </ul>
+</div>
+
+<!-- SLIDE 18: Bible Reading Stats -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0c4a6e 100%);">
+  <h3 style="color:#7dd3fc;">Bible Reading 4+ Times/Week</h3>
+  <h2 style="font-size:36px; margin-bottom:30px;">CBE Study of 40,000 People</h2>
+  <div class="stat-grid">
+    <div class="stat-item">
+      <div class="stat-number">-30%</div>
+      <div class="stat-label">Loneliness</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">-32%</div>
+      <div class="stat-label">Anger Issues</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">-40%</div>
+      <div class="stat-label">Bitterness in Relationships</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">-61%</div>
+      <div class="stat-label">Viewing Pornography</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">-74%</div>
+      <div class="stat-label">Gambling</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">+407%</div>
+      <div class="stat-label">Memorizing Scripture</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">+228%</div>
+      <div class="stat-label">Sharing Your Faith</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 19: Surrender 3 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #9333a0 50%, #4a1942 100%);">
+  <div class="surrender-number">3</div>
+  <div class="surrender-item" style="color:#f0abfc;">I'm letting God choose <span class="highlight">what I'll do with my life</span></div>
+  <p style="font-size:30px; margin-top:30px; color:#e2e8f0; max-width:800px;">Romans 12:3-8 — Using your gifts for others, not just yourself</p>
+  <ul style="margin-top:20px;">
+    <li>The opposite = <span class="highlight">"quiet quitting"</span> on God — just doing the minimum</li>
+    <li>"Whatever you do, work at it with all your heart, as working for the <span class="highlight">Lord</span>" — Colossians 3</li>
+    <li>Your talents and gifts are for the <span class="highlight">benefit of others</span></li>
+  </ul>
+</div>
+
+<!-- SLIDE 20: Three Surrenders Summary -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%);">
+  <h3 style="color:#fbbf24;">Three Surrenders</h3>
+  <div class="chain">
+    <div class="chain-item">🧭 What's right & wrong</div>
+  </div>
+  <div class="chain">
+    <div class="chain-item">🧠 Who I'm becoming</div>
+  </div>
+  <div class="chain">
+    <div class="chain-item">🎯 What I'll do with my life</div>
+  </div>
+  <p style="font-size:30px; margin-top:30px; color:#94a3b8;">The Surrendered Life = giving up your right to choose your own way<br>and following God's way instead.</p>
+</div>
+
+<!-- SLIDE 21: Key Idea 3 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">Key Idea 3</h3>
+  <h2>True Worship = Service</h2>
+  <ul>
+    <li>The Greek word for "worship" in Romans 12:1 is <span class="highlight">latreia</span></li>
+    <li>It means BOTH <span class="highlight">worship</span> AND <span class="highlight">service</span></li>
+    <li>True worship isn't just singing on Sunday — it's how you live <span class="highlight">Monday through Saturday</span></li>
+    <li>The motivation isn't <span class="highlight">guilt</span> — it's <span class="highlight">GRATITUDE</span></li>
+  </ul>
+</div>
+
+<!-- SLIDE 22: Selfishness vs. Selflessness -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%);">
+  <h3 style="color:#fbbf24;">The Big Shift</h3>
+  <div class="compare-grid">
+    <div class="compare-col">
+      <h3 style="color:#f87171; font-size:28px;">Living for Yourself</h3>
+      <ul>
+        <li style="color:#fca5a5;">Use gifts to promote yourself</li>
+        <li style="color:#fca5a5;">Maximize your own comfort</li>
+        <li style="color:#fca5a5;">"Quiet quitting" — do the minimum</li>
+        <li style="color:#fca5a5;">Self-centered perspective</li>
+      </ul>
+    </div>
+    <div class="compare-col">
+      <h3 style="color:#86efac; font-size:28px;">Living as a Sacrifice</h3>
+      <ul>
+        <li style="color:#bbf7d0;">Use gifts to serve others</li>
+        <li style="color:#bbf7d0;">Put others' needs first</li>
+        <li style="color:#bbf7d0;">Work with all your heart for the Lord</li>
+        <li style="color:#bbf7d0;">Selfless, Christ-like love</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 23: Video -->
+<div class="slide slide-video">
+  <h3 style="color:#c4b5fd;">Recommended Video (8 min)</h3>
+  <h2 style="font-size:36px; margin-bottom:30px;">BibleProject: Romans 5–16 Overview</h2>
+  <a href="https://www.youtube.com/watch?v=0SVTl4Xa5fY" target="_blank" class="video-thumb" onclick="event.stopPropagation();">
+    <img src="https://img.youtube.com/vi/0SVTl4Xa5fY/maxresdefault.jpg" alt="BibleProject Romans 5-16">
+    <div class="play-btn">
+      <svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+    </div>
+  </a>
+  <p class="video-label">Click to open in YouTube — covers Romans 5–16 themes including living sacrifice and the body of Christ</p>
+</div>
+
+<!-- SLIDE 24: Key Takeaway -->
+<div class="slide slide-transition">
+  <h3 style="color:#fbbf24; font-size:28px; letter-spacing:2px; text-transform:uppercase;">The Bottom Line</h3>
+  <blockquote style="border-left-color:#fbbf24; max-width:1000px; font-size:38px;">
+    Jesus paid off all your debts. You are <span class="highlight">free</span>.<br><br>
+    The question is: what are you going to do with that freedom?
+  </blockquote>
+  <p style="font-size:32px; margin-top:30px; color:#e2e8f0;">Not guilt. <span class="highlight" style="font-size:44px;">GRATITUDE.</span></p>
+</div>
+
+<!-- SLIDE 25: Transition to Small Groups -->
+<div class="slide slide-title">
+  <span class="emoji-big">💬</span>
+  <h1>Small Group Time</h1>
+  <p class="subtitle">Split into groups of 4-5 with a leader</p>
+  <p style="font-size:28px; color:#818cf8; margin-top:20px;">No judgment zone. Share honestly. Ask questions. Listen to each other.</p>
+</div>
+
+<!-- Counter -->
+<div id="counter"></div>
+<div id="hint">Press F for fullscreen | ← → to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); showSlide(current - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    showSlide(current + 1);
+  });
+</script>
+</body>
+</html>

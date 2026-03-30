@@ -18,7 +18,15 @@ Parse the arguments:
 
 If arguments are missing, ask the user for them.
 
-## Step 1: Download Subtitles from YouTube
+## Step 0: Check for User-Provided Materials
+
+Before downloading anything, check if the user has provided additional source materials (transcript documents, PowerPoint files, etc.) in a specified folder (e.g., `C:\Users\jizjin\Downloads`). These often contain the speaker's intended content — correct scripture references, key phrases, sermon outline — and should be combined with the subtitle transcript for maximum accuracy.
+
+Extract text from `.docx` files using `python-docx` and from `.pptx` files using `python-pptx` (Python 3.7 at `/c/Program Files/Python37/python`).
+
+## Step 1: Obtain Subtitles
+
+### Option A: Download from YouTube (preferred)
 
 Use `yt-dlp` to download the auto-generated English subtitles from the YouTube video:
 
@@ -28,9 +36,34 @@ yt-dlp --write-auto-sub --sub-lang en --skip-download --sub-format srt -o "%(tit
 
 This will create an `.en.vtt` or `.en-orig.srt` file. Find the subtitle file that was created.
 
+### Option B: Generate Locally via Audio + Whisper (fallback)
+
+If YouTube auto-subtitles are not available (yt-dlp reports "no subtitles for the requested languages"), follow this fallback:
+
+1. **Extract audio** from the YouTube video:
+   ```bash
+   yt-dlp -x --audio-format mp3 -o "%(title)s.%(ext)s" "<youtube-url>"
+   ```
+   If ffmpeg is not installed, install it: `winget install --id Gyan.FFmpeg -e`
+   Then convert the downloaded webm to mp3: `ffmpeg -i input.webm -vn -ab 192k -ar 44100 output.mp3`
+
+2. **Download the whisper model** (if not already present):
+   ```bash
+   curl -L -o ggml-base.bin "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin"
+   ```
+
+3. **Generate subtitles** using ffmpeg's built-in whisper filter. **Important:** On Windows, run this via `cmd.exe` or a `.bat` file to avoid Git Bash path escaping issues:
+   ```bat
+   @echo off
+   cd /d C:\alanjin14\sunday_school
+   "C:\Users\jizjin\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe" -y -i "input.mp3" -af "whisper=model=ggml-base.bin:language=en:format=srt:destination=output.srt" -f null NUL
+   ```
+
+4. **Clean up** the whisper model file after transcription to save space.
+
 ## Step 2: Extract the Sermon Portion
 
-Parse the subtitle file (SRT/VTT format) and extract only the lines that fall within the user-specified time span.
+Parse the subtitle file (SRT/VTT format) and extract only the lines that fall within the user-specified time span. If no time span is provided, use the full subtitle file (the sermon portion can be identified by context — worship music vs. spoken sermon).
 
 To convert timestamps:
 - `MM:SS` format means `00:MM:SS`
@@ -41,6 +74,8 @@ Read the subtitle file content and extract the text for the sermon time range. C
 - Remove duplicate lines (auto-subs often repeat)
 - Remove formatting tags like `<font>`, `[Music]`, etc.
 - Consolidate into readable paragraphs
+
+**Combine sources:** Use the subtitle transcript for actual spoken content (examples, illustrations, humor, audience interaction) AND the user-provided docx/pptx for intended content (correct scripture, key phrases, outline structure). The combination produces far more accurate materials than either source alone.
 
 ## Step 3: Generate Sermon Summary
 
