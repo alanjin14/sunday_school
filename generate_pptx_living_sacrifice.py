@@ -281,9 +281,9 @@ add_text(s, '"Do not conform to the pattern of this world"',
          Inches(1.5), Inches(3.3), Inches(10.3), Inches(0.6),
          font_size=26, italic=True, color=SLATE, align=PP_ALIGN.CENTER)
 items = [
-    "If God told you that you couldn't lie anymore \u2014 would that cramp your lifestyle?",
-    "Example: parents lying about their kid's age for a discount",
+    'The world says: "You do you" \u2014 moral relativism, no absolute right or wrong',
     "As Christians: we trust God's wisdom to define right and wrong",
+    "Even when it's inconvenient or goes against what everyone around us is doing",
 ]
 y = Inches(4.2)
 for item in items:

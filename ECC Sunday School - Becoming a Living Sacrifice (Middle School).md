@@ -98,7 +98,7 @@ The sermon broke down Romans 12:1-8 into **three specific choices** you hand ove
 
 **1. I'm letting God choose what is right and wrong** ("Do not conform to the pattern of this world")
 - Without faith, you end up with **moral relativism** -- "what's right for me is right for me."
-- Elder Elton gave a great example: "If I told you this morning you couldn't lie anymore -- how many of you think that would cramp your lifestyle?" He pointed out that parents sometimes lie about their kid's age to get a cheaper ticket. What does that teach kids? That lying is OK as long as the benefit is worth it. As Christians, we let GOD define right and wrong, even when it's inconvenient.
+- As Christians, we let GOD define right and wrong, even when it's inconvenient or goes against what everyone around us is doing.
 
 **2. I'm letting God choose who I'm becoming** ("Be transformed by the renewing of your mind")
 - This is about letting God change you from the inside out -- your character, your heart, your worldview, your perspective.
@@ -170,7 +170,7 @@ Encourage students to **share honestly and ask questions**. No judgment zone.
    - What does social media (TikTok, Instagram, Snapchat) tell you is normal or cool?
    - What do kids at school say about cheating on tests, talking behind people's backs, or excluding someone from a group?
 
-8. Elder Elton gave an example of parents lying about their kid's age to get a discount -- a "small" lie that seems harmless. Think about your everyday life at school and with friends. What are some "small" compromises middle schoolers make all the time? (Examples to get started: copying homework, saying "I'm fine" when you're not, laughing at a joke that puts someone down, pretending to like something to fit in.) Why are these so easy to justify?
+8. The world is full of "small" compromises that seem harmless. Think about your everyday life at school and with friends. What are some "small" compromises middle schoolers make all the time? (Examples to get started: copying homework, saying "I'm fine" when you're not, laughing at a joke that puts someone down, pretending to like something to fit in, telling a "white lie" to avoid trouble.) Why are these so easy to justify?
 
 9. Imagine two versions of your school day -- one where you're "conforming to the world's pattern" and one where you're "transformed by the renewing of your mind." What would actually look DIFFERENT? (Think about: how you treat the kid who sits alone at lunch, how you respond when your friend group is gossiping, what you do when someone is being bullied in the group chat, how you handle a test you didn't study for.)
 

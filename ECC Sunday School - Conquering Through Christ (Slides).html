@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunday School: Conquering Through Christ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #f1f5f9;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide.active { display: flex; }
+
+  /* Slide backgrounds */
+  .slide-title {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker-title {
+    background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #7f1d1d 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker {
+    background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 80%, #7f1d1d 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-transition {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-scripture {
+    background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #1c1917 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-keyidea {
+    background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0c4a6e 100%);
+  }
+
+  .slide-video {
+    background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #1e1b4b 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-image {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .slide-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+  }
+
+  .slide-image > * { position: relative; z-index: 1; }
+
+  /* Typography */
+  h1 {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: #93c5fd;
+  }
+
+  p, li {
+    font-size: 32px;
+    line-height: 1.5;
+    color: #e2e8f0;
+  }
+
+  .subtitle {
+    font-size: 28px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .date-tag {
+    font-size: 22px;
+    color: #818cf8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .emoji-big {
+    font-size: 96px;
+    margin-bottom: 30px;
+    display: block;
+  }
+
+  .scenario-text {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 900px;
+  }
+
+  .scenario-label {
+    font-size: 24px;
+    color: #fca5a5;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  blockquote {
+    font-size: 36px;
+    font-style: italic;
+    line-height: 1.5;
+    border-left: 5px solid #818cf8;
+    padding: 20px 30px;
+    max-width: 1000px;
+    color: #e2e8f0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0 12px 12px 0;
+  }
+
+  blockquote cite {
+    display: block;
+    font-size: 24px;
+    color: #94a3b8;
+    font-style: normal;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 12px 0;
+    padding-left: 40px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #818cf8;
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  .highlight {
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .accent { color: #818cf8; }
+  .accent-teal { color: #5eead4; }
+  .accent-red { color: #fca5a5; }
+
+  .instructions {
+    font-size: 26px;
+    color: #94a3b8;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  .two-sides {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .two-sides .text-side { flex: 1; }
+  .two-sides .image-side {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .two-sides .image-side img {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .video-thumb {
+    display: block;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    display: block;
+  }
+
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.2s;
+  }
+
+  .play-btn:hover { background: rgba(0,0,0,0.15); }
+
+  .play-btn svg {
+    width: 80px;
+    height: 80px;
+    fill: white;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  }
+
+  .video-label {
+    font-size: 24px;
+    color: #94a3b8;
+    margin-top: 20px;
+  }
+
+  .answer-number {
+    font-size: 80px;
+    font-weight: 900;
+    color: #fbbf24;
+    margin-bottom: 10px;
+  }
+
+  .answer-item {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 900px;
+  }
+
+  .chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+  }
+
+  .chain-item {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fbbf24;
+    background: rgba(251,191,36,0.1);
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: 2px solid rgba(251,191,36,0.3);
+  }
+
+  .chain-arrow {
+    font-size: 36px;
+    color: #475569;
+  }
+
+  .list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+  }
+
+  .list-item {
+    background: rgba(255,255,255,0.05);
+    padding: 20px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 30px;
+    color: #e2e8f0;
+  }
+
+  .list-item .emoji { font-size: 36px; margin-right: 12px; }
+
+  /* Slide counter */
+  #counter {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-size: 18px;
+    color: #475569;
+    z-index: 100;
+    font-weight: 600;
+  }
+
+  /* Fullscreen hint */
+  #hint {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    font-size: 16px;
+    color: #334155;
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide slide-title active">
+  <div class="date-tag">ECC Redmond | April 5, 2026 — Easter Sunday</div>
+  <h1>Conquering Through Christ</h1>
+  <p class="subtitle">Sunday School — Middle Schoolers (Grades 6–8)</p>
+  <p class="subtitle">Romans 8:31-39</p>
+</div>
+
+<!-- SLIDE 2: Icebreaker Title -->
+<div class="slide slide-icebreaker-title">
+  <span class="emoji-big">💪</span>
+  <h1>UNSTOPPABLE</h1>
+  <p class="subtitle" style="max-width:800px;">I'll describe an obstacle. You shout what can <span class="highlight">STOP</span> it — or say <span class="highlight">"UNSTOPPABLE"</span> if nothing can!</p>
+  <p class="instructions">Get ready...</p>
+</div>
+
+<!-- SLIDE 3: Obstacle 1 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">What can stop...</div>
+  <span class="emoji-big">🚂</span>
+  <div class="scenario-text">A <span class="highlight">speeding train</span>?</div>
+</div>
+
+<!-- SLIDE 4: Obstacle 2 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">What can stop...</div>
+  <span class="emoji-big">🌊</span>
+  <div class="scenario-text">A <span class="highlight">flood of water</span>?</div>
+</div>
+
+<!-- SLIDE 5: Obstacle 3 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">What can stop...</div>
+  <span class="emoji-big">📱</span>
+  <div class="scenario-text">A <span class="highlight">viral TikTok trend</span>?</div>
+</div>
+
+<!-- SLIDE 6: Obstacle 4 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">What can stop...</div>
+  <span class="emoji-big">⏰</span>
+  <div class="scenario-text">Your <span class="highlight">alarm clock</span> on Monday morning?</div>
+</div>
+
+<!-- SLIDE 7: Obstacle 5 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">What can stop...</div>
+  <span class="emoji-big">🦁</span>
+  <div class="scenario-text">A <span class="highlight">lion</span> chasing you?</div>
+  <p class="instructions">Pastor Steven mentioned 1 Peter 5:8 — "Your adversary, the devil, prowls around like a roaring lion..."</p>
+</div>
+
+<!-- SLIDE 8: Obstacle 6 — The Big One -->
+<div class="slide slide-icebreaker" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <div class="scenario-label">What can stop...</div>
+  <span class="emoji-big">❤️</span>
+  <div class="scenario-text"><span class="highlight">God's love</span> for you?</div>
+  <p style="font-size:48px; color:#86efac; font-weight:900; margin-top:30px;">NOTHING.</p>
+</div>
+
+<!-- SLIDE 9: Transition — Easter -->
+<div class="slide slide-transition">
+  <h2 style="font-size:44px;">Happy Easter!</h2>
+  <p style="font-size:34px; margin-top:20px; max-width:1000px; color:#e2e8f0;">Pastor Steven said: God doesn't leave Easter in the past. <span class="highlight">God wants Easter in our present lives.</span></p>
+  <p style="font-size:32px; margin-top:30px; max-width:1000px; color:#e2e8f0;">Christ's death and resurrection aren't just history — they are <span class="accent-teal">resurrection power for living TODAY</span>.</p>
+  <p style="font-size:40px; margin-top:30px; font-weight:900; color:#fbbf24;">What then shall we say to these things?</p>
+</div>
+
+<!-- SLIDE 10: Scripture Romans 8:31-32 -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1920&q=80');">
+  <h3 style="color:#fbbf24;">Key Verse</h3>
+  <blockquote>
+    "What then shall we say to these things? If God is for us, who is against us? He who did not spare His own Son, but delivered Him over for us all, how will He not also with Him freely give us all things?"
+    <cite>— Romans 8:31-32</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 11: Scripture Romans 8:37-39 -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=80');">
+  <blockquote>
+    "But in all these things we overwhelmingly conquer through Him who loved us. For I am convinced that neither death, nor life, nor angels, nor principalities, nor things present, nor things to come, nor powers, nor height, nor depth, nor any other created thing will be able to separate us from the love of God that is in Christ Jesus our Lord."
+    <cite>— Romans 8:37-39</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 12: Sermon Overview -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);">
+  <h3 style="color:#818cf8;">Easter Sermon</h3>
+  <h2 style="font-size:40px;">Conquering Through Christ</h2>
+  <ul>
+    <li style="font-size:36px;"><span class="highlight">The Question:</span> What shall we say to these things? (v. 31a)</li>
+    <li style="font-size:36px;"><span class="highlight">5 Answers:</span> Five rhetorical questions (vv. 31b-36)</li>
+    <li style="font-size:36px;"><span class="highlight">Conclusion:</span> God's love is the power that overcomes (vv. 37-39)</li>
+  </ul>
+</div>
+
+<!-- SLIDE 13: Key Idea 1 -->
+<div class="slide slide-keyidea">
+  <h3>Key Idea 1</h3>
+  <h2>God Already Paid the Highest Price</h2>
+  <ul>
+    <li>If God gave up His own <span class="highlight">Son</span> for us, why would He skip the easy stuff?</li>
+    <li>A man who buys a $500K boat doesn't leave it <span class="highlight">parked in his driveway</span></li>
+    <li>God paid the ultimate price to get you — He's NOT going to <span class="highlight">forget about you</span></li>
+    <li>"Has God forgotten me?" — <span class="highlight">Absolutely not.</span> He's right there in your life.</li>
+  </ul>
+</div>
+
+<!-- SLIDE 14: Key Idea 2 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #6b2163 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">Key Idea 2</h3>
+  <h2>Nothing Can Condemn You</h2>
+  <ul>
+    <li><span class="highlight">"Not guilty"</span> is NOT the same as "innocent"</li>
+    <li>Like a debt that's been <span class="highlight">paid by someone else</span> — the debt is GONE</li>
+    <li>Jesus fully and completely paid our debt of sin. <span class="highlight">It is finished.</span></li>
+    <li>Satan wants you to <span class="accent-red">wallow in guilt</span>. God wants you to <span class="accent-teal">confess, get up, and keep walking</span>.</li>
+  </ul>
+</div>
+
+<!-- SLIDE 15: Jesus Intercedes -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #1c1917 100%);">
+  <h3 style="color:#fbbf24;">Right Now, Jesus Is Praying for You</h3>
+  <blockquote style="border-left-color:#fbbf24; max-width:1000px; font-size:34px;">
+    "Simon, Simon, behold, Satan has demanded to sift you like wheat, but I have prayed for you, that your faith will not fail."
+    <cite>— Luke 22:31-32</cite>
+  </blockquote>
+  <p style="font-size:30px; margin-top:30px; color:#94a3b8; max-width:900px;">Jesus prayed for Peter. He is praying for <span class="highlight">you and me</span> right now at the right hand of God. TWO persons of the Trinity — Jesus AND the Holy Spirit — are praying for you.</p>
+</div>
+
+<!-- SLIDE 16: Key Idea 3 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">Key Idea 3</h3>
+  <h2>We Are "Super Conquerors"</h2>
+  <ul>
+    <li>"Overwhelmingly conquer" = <span class="highlight">super conqueror</span></li>
+    <li>A super conqueror takes his enemies and <span class="highlight">makes them serve him</span></li>
+    <li>God takes what Satan uses against us and turns it for our <span class="highlight">good</span></li>
+    <li>We conquer not by our own strength but <span class="highlight">through Him who loved us</span></li>
+  </ul>
+</div>
+
+<!-- SLIDE 17: Everything Serves God's Purpose -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0c4a6e 100%);">
+  <h3 style="color:#7dd3fc;">All Things Work Together for Good</h3>
+  <div class="list-grid">
+    <div class="list-item"><span class="emoji">💀</span> <span class="highlight">Death</span> frees us from broken bodies → brings us to Jesus</div>
+    <div class="list-item"><span class="emoji">🌱</span> <span class="highlight">Life</span> gives us room to grow</div>
+    <div class="list-item"><span class="emoji">👼</span> <span class="highlight">Angels</span> serve us</div>
+    <div class="list-item"><span class="emoji">⚔️</span> <span class="highlight">Trials</span> strengthen our faith</div>
+    <div class="list-item"><span class="emoji">🌍</span> <span class="highlight">Present things</span> teach us only Christ satisfies</div>
+    <div class="list-item"><span class="emoji">🔮</span> <span class="highlight">Future things</span> are under God's control</div>
+  </div>
+  <p style="font-size:28px; margin-top:30px; color:#94a3b8;">Everything is made to serve God's saving, sanctifying love work in you.</p>
+</div>
+
+<!-- SLIDE 18: 1 John 4:4 -->
+<div class="slide slide-transition">
+  <blockquote style="border-left-color:#86efac; max-width:1000px; font-size:38px;">
+    "You are from God, little children, and have overcome them; because greater is He who is in you than he who is in the world."
+    <cite>— 1 John 4:4</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 19: Spurgeon -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%);">
+  <h3 style="color:#fbbf24;">C.H. Spurgeon — A Real Super Conqueror</h3>
+  <ul>
+    <li>One of the <span class="highlight">5 greatest preachers</span> in history</li>
+    <li>At age 20, a prank caused a stampede — 7 died. He suffered <span class="highlight">lifelong depression</span></li>
+    <li>Also suffered severe <span class="highlight">gout</span> — bedridden for days at a time</li>
+    <li>Yet he <span class="highlight">never gave up</span>. Planted 200+ churches. Started a seminary.</li>
+    <li>He conquered by <span class="highlight">holding on to Christ</span> and never letting go</li>
+  </ul>
+  <p style="font-size:28px; margin-top:20px; color:#94a3b8; font-style:italic;">"You don't have to be happy and clappy all the time to be faithful to Christ."</p>
+</div>
+
+<!-- SLIDE 20: Three Responses -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);">
+  <h3 style="color:#fbbf24;">How Should We Respond?</h3>
+  <div class="chain">
+    <div class="chain-item">🌅 Bring Easter into your daily life</div>
+  </div>
+  <div class="chain">
+    <div class="chain-item">📖 Love and serve God</div>
+  </div>
+  <div class="chain">
+    <div class="chain-item">🤝 Care for those God cares for</div>
+  </div>
+  <p style="font-size:30px; margin-top:30px; color:#94a3b8;">Difficulties are not just burdens — they are opportunities to look to God.<br>Easter is resurrection power for living TODAY.</p>
+</div>
+
+<!-- SLIDE 21: Video -->
+<div class="slide slide-video">
+  <h3 style="color:#c4b5fd;">Recommended Video (11 min)</h3>
+  <h2 style="font-size:36px; margin-bottom:30px;">BibleProject: Romans 5–16 Overview</h2>
+  <a href="https://www.youtube.com/watch?v=0SVTl4Xa5fY" target="_blank" class="video-thumb" onclick="event.stopPropagation();">
+    <img src="https://img.youtube.com/vi/0SVTl4Xa5fY/maxresdefault.jpg" alt="BibleProject Romans 5-16">
+    <div class="play-btn">
+      <svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+    </div>
+  </a>
+  <p class="video-label">Click to open in YouTube — covers Romans 5–16 including Romans 8 and God's unbreakable love</p>
+</div>
+
+<!-- SLIDE 22: Key Takeaway -->
+<div class="slide slide-transition">
+  <h3 style="color:#fbbf24; font-size:28px; letter-spacing:2px; text-transform:uppercase;">The Bottom Line</h3>
+  <blockquote style="border-left-color:#fbbf24; max-width:1000px; font-size:38px;">
+    God already paid the <span class="highlight">highest price</span> for you.<br><br>
+    Absolutely <span class="highlight">NOTHING</span> can separate you from His love.
+  </blockquote>
+  <p style="font-size:32px; margin-top:30px; color:#e2e8f0;">Not your worst day. Not your biggest failure. Not your deepest fear.</p>
+  <p style="font-size:40px; margin-top:20px; font-weight:900; color:#86efac;">You are more than a conqueror.</p>
+</div>
+
+<!-- SLIDE 23: Transition to Small Groups -->
+<div class="slide slide-title">
+  <span class="emoji-big">💬</span>
+  <h1>Small Group Time</h1>
+  <p class="subtitle">Split into groups of 4-5 with a leader</p>
+  <p style="font-size:28px; color:#818cf8; margin-top:20px;">No judgment zone. Share honestly. Ask questions. Listen to each other.</p>
+</div>
+
+<!-- Counter -->
+<div id="counter"></div>
+<div id="hint">Press F for fullscreen | ← → to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); showSlide(current - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    showSlide(current + 1);
+  });
+</script>
+</body>
+</html>

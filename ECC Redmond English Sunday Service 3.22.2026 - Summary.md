@@ -50,8 +50,7 @@
 - This means being dead to sin — yielding to God the authority to define right and wrong.
 - Without faith, the world says "what's right for me is right for me" — moral relativism with no absolute morality.
 - As Christ followers, we yield the right to decide right and wrong to God, who is infinitely wise, good, just, and loving.
-- Illustrated with the question: "If I told you this morning you couldn't lie anymore — how many of you think that would cramp your lifestyle?" This reveals how much we rely on small compromises.
-- Key example: parents lying about a child's age to get a discount, showing kids that lying is acceptable if the benefit is worth it. This is conforming to the world's pattern.
+- As believers, we recognize that God — who is infinitely wise, good, just, and loving — has the authority to define morality, even when it's inconvenient or countercultural.
 
 #### Choice 2: Letting God Change My Way of Thinking — "Be transformed by the renewing of your mind" (v. 2)
 
