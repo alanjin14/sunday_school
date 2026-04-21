@@ -190,7 +190,7 @@ add_text(s,
          font_size=32, italic=True, color=TEXT_MAIN, align=PP_ALIGN.CENTER)
 add_text(s, "\u2014 Acts 8:1 (ESV)", Inches(1), Inches(5.5), Inches(11.3), Inches(0.6),
          font_size=22, bold=True, color=SLATE, align=PP_ALIGN.CENTER)
-add_text(s, 'Greek "approved" = suneudokeo \u2014 "to be pleased with"',
+add_text(s, 'Greek "approved" = suneodokeo \u2014 "to be pleased with"',
          Inches(1), Inches(6.3), Inches(11.3), Inches(0.5),
          font_size=20, italic=True, color=RED_ACC, align=PP_ALIGN.CENTER)
 

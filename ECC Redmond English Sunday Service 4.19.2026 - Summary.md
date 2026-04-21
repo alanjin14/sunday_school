@@ -34,41 +34,41 @@ Additional scriptures referenced:
 
 ## Sermon Summary
 
-### Introduction — Pastor Steve's New Title
+### Introduction
 
-- Pastor Steve opened by sharing that the church has recently ordained him as Pastor (previously Minister for the last 12 years). He joked it might take another 12 years to get used to the title. He continues to serve as youth director.
-- He placed this sermon in the context of the five-year series "The Gospel: Power of God," covering the gospel message, gospel impact, and now gospel mission. Recent sermons in the series covered reconciliation, setting free, renewal, conquering, and sanctification (Minister Chris last week).
+- Pastor Steve placed this sermon in the context of the five-year sermon series "The Gospel: Power of God," covering the gospel message, gospel impact, and now gospel mission. Recent sermons in the series covered how the Gospel reconciles us, sets us free, renews us, conquers — and last week Minister Chris shared on being sanctified (set apart for God's purposes).
 
 ### Opening Question
 
-- "Have you had a moment in your life when life didn't go according to plan? When everything was disrupted — everything was going fine, everything felt stable, and then suddenly everything shifts beneath your feet?"
-- This is exactly what happened to the early church in Acts 8.
+- "Have you had a moment when life didn't go according to plan — when everything felt disrupted? The kind of moment where what once felt stable suddenly shifts beneath your feet? Your routine was disrupted? Your plans canceled."
+- That's exactly where the early church finds itself in Acts 8 — a disruption to their lives.
 
 ### 1. God Uses Disruption to Scatter His People
 
-- After Stephen's martyrdom, Saul launched unprecedented persecution against the Jerusalem church. The Greek word for Saul's "approval" of Stephen's execution is **suneudokeo** — meaning "to be pleased with." Saul took pleasure in killing Christians.
-- Saul was "ravaging" the church. The ancient Greek word carries two images: **an army destroying a city** and **a wild animal tearing at its meat**. He went house to house, dragging off both men and women (unprecedented — usually only men were arrested). Those who did not renounce faith in Jesus Christ were killed.
+- After Stephen's martyrdom, Saul launched unprecedented persecution against the Jerusalem church. The Greek word for Saul's "approval" of Stephen's execution is **suneodokeo** — meaning "to be pleased with." As Pastor Steve put it: "He was a bad man. Jerry, he was a very bad man." Saul took pleasure in killing Christians.
+- Saul was "ravaging" the church. The ancient Greek word — from commentaries — refers to **an army destroying a city** or **a wild animal tearing at its meat**. He entered houses and synagogues, dragging off both men and women (unprecedented for the time). He had believers beaten and imprisoned. If they renounced their faith in Jesus they would be set free; if they did not recant they would be killed.
 - **Star Wars illustration**: Luke Skywalker was minding his own business on Tatooine, harvesting water, living a comfortable life. Then two droids showed up, his family was killed, his home destroyed — and that painful disruption pushed him into something greater: the Rebellion. In the same way, the early church didn't choose to leave Jerusalem, but God used that disruption to scatter them.
 - Jesus had already told them in Acts 1:8 to be witnesses "in Jerusalem, and in all Judea and Samaria, and to the ends of the earth." But the Christians had stayed in Jerusalem — comfortable, gathering, eating together, praying, watching the community grow. It took this disruption to move them out into the world as Jesus had commanded.
 
 ### 2. The Courage of the Scattered
 
-- The remarkable thing: "Those who were scattered went about **preaching the word**" (v. 4). They didn't go into hiding — though you'd think they would, being hunted, persecuted, facing imprisonment and death. The scattering actually **emboldened** them to preach.
-- The surprise in verse 1: "they were all scattered... **except the apostles.**" The apostles (the trained leaders who followed Jesus) stayed in Jerusalem. The ones who scattered and preached were **ordinary believers** — students, teachers, cooks, regular people. Not the trained preachers.
-- **Philip** is highlighted in verse 5. He's not the apostle Philip but one of the seven deacons from Acts 6, raised up alongside Stephen to serve widows and provide food. "In essence, he was a waiter." Yet he was raised up to become an evangelist to the Samaritans.
+- Pastor Steve called verse 4 "revolutionary": "Those who were scattered did not go into hiding — they went on mission." The scattering actually **emboldened** them to preach the Gospel in the regions of Judea and Samaria.
+- The surprise in verse 1: "they were all scattered... **except the apostles.**" The apostles stayed in Jerusalem. The scattered ones were the believers — **the laity, not the clergy**. As Pastor Steve said: "Sometimes we think sharing the Gospel is for pastors, missionaries, or people who are more qualified. But here it reminds us that mission belongs to all of us."
+- **Philip** is highlighted in verse 5. He's not the apostle Philip but one of the deacons raised up with Stephen in Acts 6 — they served the widows and cared for the followers. "He was a waiter. Just a normal guy. Who became an evangelist."
 - **The "Famous Phils" illustration**: Pastor Steve showed pictures of Dr. Phil, Phil Jackson, and Uncle Phil (James Avery from Fresh Prince) before revealing that the Philip who matters most was just a deacon — a table server.
 - Preaching to Samaria took extraordinary courage. Jews and Samaritans had **hundreds of years** of ethnic and religious tension going back to Ezra in the Old Testament. As the woman at the well told Jesus: "Jews do not have dealings with Samaritans." For Jewish Christians to preach the gospel to Samaritans meant breaking centuries of social norms.
-- This was not done in their own power but through **the power of the Holy Spirit**. 2 Timothy 1:7: "For God gave us a spirit not of fear but of power and of love and self-discipline."
-- **COVID-19 pandemic parallel (2020-2022)**: Churches were forcibly closed. Believers scattered to living rooms and Zoom screens. There was a surge in digital missions and local neighborhood care. The word was taken out of the temples/churches and into the streets. Hundreds of people continue to tune into ECC's messages via live streaming. This modern scattering parallels Acts 8.
+- This was not out of their own power but **the extraordinary power of the Holy Spirit**. 2 Timothy 1:7 (NIV): "For God gave us a spirit not of fear but of power and love and self-discipline."
+- **COVID-19 pandemic parallel (2020-2022)**: When church buildings were forcibly closed, the church was "scattered" to living rooms and Zoom screens. There was a surge in digital missions and localized neighborhood care that **hadn't happened in decades**. The "scattering" forced the Word out of the "temple" and into the street.
 - **Tim Keller quote**: "The Gospel is this; We are more sinful and flawed than we ever dared to believe, yet more loved and accepted than we ever dared to hope." This gospel message is not reserved for a few — it's entrusted to all of us.
 
 ### 3. The Joy of the Unexpected Harvest
 
 - When Philip proclaimed Christ in Samaria, the crowds paid attention "with one accord" (v. 6). Unclean spirits were cast out, the paralyzed and lame were healed (v. 7).
 - The climax is verse 8: "So there was much **joy** in that city." This joy was not private or quiet — it was overflowing, communal, and visible.
-- When the gospel takes root, it doesn't just transform individuals but **communities**. "The gospel message doesn't just fix problems — it restores joy to all the communities." The Samaritans believed and were delivered.
-- **Psalm 65:8** — "The whole earth is filled with awe at your wonders. Where morning dawns, where evening fades, you call forth songs of joy." This joy comes from God — it's not a feeling but an overwhelming certainty and hope that God is there for us.
-- The early Christians were **scattered but not shattered**. God still had a mission for them. A disruption became a direction. Ordinary people became messengers. And the gospel produced joy for all who listened.
+- When the gospel takes root, it doesn't just transform individuals but **communities**. "The Gospel doesn't just fix problems — it restores joy. When God's kingdom breaks in, it's a shared collective restoration." The Samaritans believed and were delivered from their sins.
+- Pastor Steve described the joy: "Much joy. Not private. Not quiet. Overflowing. Probably communal. Visible."
+- **Psalm 65:8** — "Who stilled the roaring of the seas, the roaring of their waves and the turmoil of the nations. The whole earth is filled with awe at your wonders; where morning dawns, where evening fades, you call forth songs of joy."
+- The early Christians were **scattered but not shattered**. "The Great Persecution" (as most Christian writers have called it) scattered the early Christians but God still had a mission for them. **"A disruption became a direction, ordinary people became messengers for the Gospel, the Gospel produced joy."**
 - **C.S. Lewis quote**: "Joy is the serious business of heaven."
 
 ---
@@ -82,7 +82,13 @@ Additional scriptures referenced:
 - See yourself on mission. Be a presence of peace, integrity, and grace. Look for opportunities to share hope. Share the stories of what Jesus Christ has done in your life. Think about how uncomfortable the early Christians were going to enemy territory — and step out anyway.
 
 ### 3. Live with Courage Beyond Your Comfort Zone
-- Live your faith with courage, humility. Build relationships beyond your comfort zone. That is what God is calling all of us to do — to step out, have faith, and carry the gospel message to everyone around us.
+- Live out your faith with courage, humility. Build relationships beyond your comfort zone.
+
+---
+
+## Benediction
+
+> "Now may the God of peace... equip you with everything good that you may do his will."
 
 ---
 

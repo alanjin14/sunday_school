@@ -81,7 +81,7 @@ Jesus told His disciples in Acts 1:8: "You will be my witnesses in Jerusalem, an
 
 But they weren't going anywhere. They had a mission from Jesus and they weren't doing it.
 
-Then persecution hit. Saul — who the Greek text says was "pleased with" Stephen's murder — started going house to house, dragging off men and women. The word "ravaging" in Greek carries two images: **an army destroying a city** and **a wild animal tearing at its meat**. That's how vicious this was.
+Then persecution hit. Saul — who the Greek text says was "pleased with" (suneodokeo) Stephen's murder — started entering houses and synagogues, dragging off men and women. He had believers beaten and imprisoned. If they renounced their faith in Jesus they'd be set free; if they didn't recant, they'd be killed. The word "ravaging" in Greek — from commentaries — refers to **an army destroying a city** or **a wild animal tearing at its meat**. That's how vicious this was.
 
 Pastor Steve used a Star Wars comparison: Luke Skywalker was minding his own business on Tatooine, harvesting water, living a comfortable life. Then two droids showed up, his family was killed, his home destroyed — and that painful disruption pushed him into something greater: the Rebellion. In the same way, the early church didn't choose to leave Jerusalem, but God used that disruption to send them exactly where Jesus had told them to go.
 
@@ -91,15 +91,15 @@ Sometimes the hardest disruptions in our lives — a move, a broken friendship, 
 
 ## Key Idea 2 — Ordinary People, Extraordinary Mission
 
-Here's the surprising detail in verse 1: "they were all scattered... **except the apostles.**" The apostles — the trained leaders, the inner circle who followed Jesus — stayed in Jerusalem. The people who scattered and preached the word were **ordinary believers**. Students, teachers, cooks, regular people. Not the trained preachers.
+Pastor Steve called verse 4 "revolutionary." Here's the surprising detail in verse 1: "they were all scattered... **except the apostles.**" The apostles stayed in Jerusalem. The scattered ones were the believers — **the laity, not the clergy**. As Pastor Steve said: "Sometimes we think sharing the Gospel is for pastors, missionaries, or people who are more qualified. But here it reminds us that mission belongs to all of us."
 
-Philip is the star of this chapter. Pastor Steve had fun with this — he showed pictures of famous "Phils" (Dr. Phil, Phil Jackson the basketball coach, Uncle Phil from *Fresh Prince*) before revealing the real Philip. He wasn't an apostle or a theologian. He was one of the seven deacons chosen in Acts 6 to serve food to widows. Pastor Steve put it bluntly: **"In essence, he was a waiter."**
+Philip is the star of this chapter. Pastor Steve had fun with this — he showed pictures of famous "Phils" (Dr. Phil, Phil Jackson the basketball coach, Uncle Phil from *Fresh Prince*) before revealing the real Philip. He wasn't an apostle or a theologian. He was one of the deacons raised up with Stephen in Acts 6 — they served the widows and cared for the followers. Pastor Steve put it bluntly: **"He was a waiter. Just a normal guy. Who became an evangelist."**
 
 Yet Philip went to Samaria — a place Jews had despised and avoided for **hundreds of years** due to deep ethnic and religious tension going back to Ezra in the Old Testament. The woman at the well told Jesus: "Jews do not have dealings with Samaritans." For a Jewish Christian to go there and preach Christ took incredible courage.
 
-How did they do it? Not by their own power. 2 Timothy 1:7 says: "For God gave us a spirit not of fear but of power and of love and self-discipline." The Holy Spirit compelled them.
+How did they do it? Not out of their own power but the extraordinary power of the Holy Spirit. 2 Timothy 1:7 (NIV) says: "For God gave us a spirit not of fear but of power and love and self-discipline."
 
-Pastor Steve also drew a parallel to the COVID-19 pandemic (2020-2022): churches were forcibly closed, believers scattered to living rooms and Zoom screens. There was a surge in digital missions and neighborhood care. The word was taken out of the temples and into the streets — just like Acts 8. Hundreds of people still tune in to ECC's messages online because of that scattering.
+Pastor Steve also drew a parallel to the COVID-19 pandemic (2020-2022): when church buildings were forcibly closed, the church was "scattered" to living rooms and Zoom screens. There was a surge in digital missions and localized neighborhood care that **hadn't happened in decades**. The "scattering" forced the Word out of the "temple" and into the street — just like Acts 8.
 
 Tim Keller said: *"The Gospel is this; We are more sinful and flawed than we ever dared to believe, yet more loved and accepted than we ever dared to hope."* This gospel is not reserved for pastors and missionaries — it's entrusted to all of us.
 
@@ -107,17 +107,17 @@ Tim Keller said: *"The Gospel is this; We are more sinful and flawed than we eve
 
 ## Key Idea 3 — Scattering Leads to Unexpected Joy
 
-Look at how the passage ends: "So there was much **joy** in that city" (v. 8). Pastor Steve emphasized that this joy was not private or quiet — it was **overflowing, communal, and visible**.
+Look at how the passage ends: "So there was much **joy** in that city" (v. 8). Pastor Steve described it powerfully: "Much joy. Not private. Not quiet. Overflowing. Probably communal. Visible."
 
 The story starts with a funeral (Stephen's burial), prison, and persecution. It ends with healing, deliverance from evil spirits, and a whole city full of joy. God turned the church's worst day into the gospel's greatest advance.
 
-Pastor Steve said: "The gospel message doesn't just fix problems — it restores joy to all the communities." When God's kingdom breaks in, it's a shared, collective restoration.
+Pastor Steve said: "The Gospel doesn't just fix problems — it restores joy. When God's kingdom breaks in, it's a shared collective restoration." People listened. Chains were broken. The sick were healed. Lives restored.
 
-He quoted Psalm 65:8: *"The whole earth is filled with awe at your wonders. Where morning dawns, where evening fades, you call forth songs of joy."* This joy comes from God — it's not just a feeling but an overwhelming certainty and hope.
+He quoted Psalm 65:8: *"Who stilled the roaring of the seas, the roaring of their waves and the turmoil of the nations. The whole earth is filled with awe at your wonders; where morning dawns, where evening fades, you call forth songs of joy."*
 
 C.S. Lewis said: *"Joy is the serious business of heaven."* The joy in Samaria was the serious, deep, real joy of heaven breaking into a city no one expected God to reach.
 
-The pattern is simple: **Persecution → Scattering → Preaching → Healing → JOY.** When God scatters us, He's planting us — and the harvest is often more joyful than anything we could have planned.
+The early Christians were scattered but not shattered — "The Great Persecution" as most Christian writers have called it. Pastor Steve's closing summary captured it perfectly: **"A disruption became a direction, ordinary people became messengers for the Gospel, the Gospel produced joy."**
 
 ---
 
