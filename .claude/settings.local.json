@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(sunday-school)",
+      "Bash(python *)",
+      "Bash(pip install *)",
+      "Bash(yt-dlp --write-auto-sub --sub-lang en --skip-download --sub-format srt --cookies-from-browser edge -o \"%\\(title\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(yt-dlp -x --audio-format mp3 -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(yt-dlp -x --audio-format mp3 --cookies-from-browser firefox -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(yt-dlp -x --audio-format mp3 --cookies-from-browser chrome -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(\"/c/Program Files/Python311/python\" \"C:/sunday_school/generate_acts13_srt.py\")",
+      "Bash(\"/c/Program Files/Python311/python\" \"C:/sunday_school/generate_great_commission_docx.py\")",
+      "Bash(\"/c/Program Files/Python311/python\" \"C:/sunday_school/generate_great_commission_pptx.py\")",
+      "Bash(yt-dlp --version)",
+      "Bash(yt-dlp -U)",
+      "Bash(yt-dlp -x --audio-format mp3 --extractor-args \"youtube:player_client=web,mweb,tv_simply\" -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(yt-dlp -x --audio-format mp3 --extractor-args \"youtube:player_client=ios\" -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(yt-dlp -x --audio-format mp3 --extractor-args \"youtube:player_client=android\" -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(\"/c/Program Files/Python311/python\" -m pip install --quiet pytubefix)",
+      "Bash('/c/Program Files/Python311/python' -c ' *)",
+      "Bash(yt-dlp -x --audio-format mp3 --cookies-from-browser edge -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(tasklist)",
+      "Bash(taskkill /F /IM msedge.exe)",
+      "Bash(cmd //c \"taskkill /F /IM msedge.exe\")",
+      "Bash(yt-dlp -x --audio-format mp3 --cookies-from-browser edge -o \"C:\\\\sunday_school\\\\acts13_audio.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(yt-dlp --write-auto-sub --sub-lang en --skip-download --sub-format srt --extractor-args \"youtube:player_client=tv_simply\" -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Bash(yt-dlp --write-auto-sub --sub-lang en --skip-download --sub-format srt --cookies-from-browser edge -o \"C:\\\\sunday_school\\\\acts13.%\\(ext\\)s\" \"https://youtu.be/9UJfgq0Vvxg\")",
+      "Read(//c/Program Files/Mozilla Firefox/**)",
+      "Read(//c/Users/jizjin/AppData/Roaming/Mozilla/**)",
+      "Bash(where python *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
+    ]
+  }
+}
