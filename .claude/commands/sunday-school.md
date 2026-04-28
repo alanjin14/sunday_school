@@ -2,6 +2,7 @@
 description: Generate Sunday School material from a YouTube sermon
 argument-hint: <youtube-url> <sermon-timespan> e.g. https://www.youtube.com/watch?v=XYZ 32:38-1:05:21
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch, WebSearch, Agent
+audio download website: https://media.ytmp3.gg/
 ---
 
 # Sunday School Material Generator

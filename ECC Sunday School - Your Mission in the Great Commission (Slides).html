@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunday School: Your Mission in the Great Commission</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #f1f5f9;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide.active { display: flex; }
+
+  .slide-title {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker-title {
+    background: linear-gradient(135deg, #422006 0%, #78350f 50%, #422006 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-icebreaker {
+    background: linear-gradient(135deg, #422006 0%, #b45309 80%, #422006 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-transition {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #1e1b4b 100%);
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-scripture {
+    background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #1c1917 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-keyidea {
+    background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0c4a6e 100%);
+  }
+
+  .slide-video {
+    background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #1e1b4b 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-image {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .slide-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+  }
+
+  .slide-image > * { position: relative; z-index: 1; }
+
+  h1 {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: #93c5fd;
+  }
+
+  p, li {
+    font-size: 32px;
+    line-height: 1.5;
+    color: #e2e8f0;
+  }
+
+  .subtitle {
+    font-size: 28px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .date-tag {
+    font-size: 22px;
+    color: #818cf8;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .emoji-big {
+    font-size: 96px;
+    margin-bottom: 30px;
+    display: block;
+  }
+
+  .scenario-text {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 1000px;
+  }
+
+  .scenario-label {
+    font-size: 24px;
+    color: #fcd34d;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  blockquote {
+    font-size: 36px;
+    font-style: italic;
+    line-height: 1.5;
+    border-left: 5px solid #818cf8;
+    padding: 20px 30px;
+    max-width: 1100px;
+    color: #e2e8f0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0 12px 12px 0;
+  }
+
+  blockquote cite {
+    display: block;
+    font-size: 24px;
+    color: #94a3b8;
+    font-style: normal;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 12px 0;
+    padding-left: 40px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #818cf8;
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  .highlight {
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .accent { color: #818cf8; }
+  .accent-teal { color: #5eead4; }
+  .accent-amber { color: #fcd34d; }
+  .accent-red { color: #fca5a5; }
+
+  .instructions {
+    font-size: 26px;
+    color: #d6d3d1;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  .video-thumb {
+    display: block;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    display: block;
+  }
+
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.2s;
+  }
+
+  .play-btn:hover { background: rgba(0,0,0,0.15); }
+
+  .play-btn svg {
+    width: 80px;
+    height: 80px;
+    fill: white;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  }
+
+  .video-label {
+    font-size: 24px;
+    color: #94a3b8;
+    margin-top: 20px;
+  }
+
+  .chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+  }
+
+  .chain-item {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fbbf24;
+    background: rgba(251,191,36,0.1);
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: 2px solid rgba(251,191,36,0.3);
+  }
+
+  .chain-arrow {
+    font-size: 36px;
+    color: #475569;
+  }
+
+  .list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto 0;
+  }
+
+  .list-item {
+    background: rgba(255,255,255,0.05);
+    padding: 20px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 28px;
+    color: #e2e8f0;
+  }
+
+  .list-item .emoji { font-size: 36px; margin-right: 12px; }
+
+  .step-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 24px 32px;
+    border-radius: 16px;
+    margin: 12px auto;
+    max-width: 1100px;
+    text-align: left;
+  }
+
+  .step-num {
+    color: #fbbf24;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .step-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 4px 0 8px 0;
+  }
+
+  .step-body {
+    font-size: 26px;
+    color: #cbd5e1;
+    line-height: 1.4;
+  }
+
+  #counter {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-size: 18px;
+    color: #475569;
+    z-index: 100;
+    font-weight: 600;
+  }
+
+  #hint {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    font-size: 16px;
+    color: #334155;
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide slide-title active">
+  <div class="date-tag">ECC Redmond | April 26, 2026</div>
+  <h1>Your Mission in the Great Commission</h1>
+  <p class="subtitle">Sunday School — Middle Schoolers (Grades 6–8)</p>
+  <p class="subtitle">Acts 13:1-5 | Elder Elton Lee</p>
+</div>
+
+<!-- SLIDE 2: Icebreaker Title -->
+<div class="slide slide-icebreaker-title">
+  <span class="emoji-big">🎬</span>
+  <h1>MISSION: POSSIBLE!</h1>
+  <p class="subtitle" style="max-width:900px;">Every great hero gets a <span class="highlight">mission</span>. Let's see if you can name them.</p>
+  <p class="instructions">Round 1 — Who's the mission?</p>
+</div>
+
+<!-- SLIDE 3: Mission 1 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Whose mission?</div>
+  <span class="emoji-big">🦸</span>
+  <div class="scenario-text">"With great power comes great responsibility.<br>Mission: <span class="highlight">protect New York</span>."</div>
+  <p class="instructions">→ Spider-Man</p>
+</div>
+
+<!-- SLIDE 4: Mission 2 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Whose mission?</div>
+  <span class="emoji-big">🚀</span>
+  <div class="scenario-text">"That's one small step for man…<br>Mission: <span class="highlight">walk on the moon</span>."</div>
+  <p class="instructions">→ Apollo 11 / Neil Armstrong</p>
+</div>
+
+<!-- SLIDE 5: Mission 3 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Whose mission?</div>
+  <span class="emoji-big">🐠</span>
+  <div class="scenario-text">"Cross the entire ocean to find one little fish.<br>Mission: <span class="highlight">rescue your son</span>."</div>
+  <p class="instructions">→ Marlin (Finding Nemo)</p>
+</div>
+
+<!-- SLIDE 6: Mission 4 -->
+<div class="slide slide-icebreaker">
+  <div class="scenario-label">Whose mission?</div>
+  <span class="emoji-big">⚡</span>
+  <div class="scenario-text">"Take a magic ring to a volcano and throw it in.<br>Mission: <span class="highlight">destroy the One Ring</span>."</div>
+  <p class="instructions">→ Frodo / The Fellowship</p>
+</div>
+
+<!-- SLIDE 7: Mission 5 — The Big One -->
+<div class="slide slide-icebreaker" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <div class="scenario-label" style="color:#86efac;">Whose mission?</div>
+  <span class="emoji-big">🌟</span>
+  <div class="scenario-text">"Go therefore and make disciples of all nations…"<br>Mission: <span class="highlight">?</span></div>
+  <p style="font-size:42px; color:#86efac; font-weight:900; margin-top:30px;">EVERY CHRISTIAN.</p>
+  <p class="instructions">Including you. Yes — even at age 12.</p>
+</div>
+
+<!-- SLIDE 8: Round 2 — Mission Receivers -->
+<div class="slide slide-icebreaker-title">
+  <span class="emoji-big">📜</span>
+  <h2>Round 2: How does the hero <span class="highlight">get</span> the mission?</h2>
+  <p class="instructions">Quick — match each one!</p>
+</div>
+
+<!-- SLIDE 9: Receivers grid -->
+<div class="slide slide-icebreaker" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);">
+  <h2 style="font-size:38px;">How the Mission Arrives</h2>
+  <div class="list-grid">
+    <div class="list-item"><span class="emoji">🎬</span><strong>Mission: Impossible</strong> — self-destructing tape</div>
+    <div class="list-item"><span class="emoji">🏰</span><strong>Frodo</strong> — Council of Elrond</div>
+    <div class="list-item"><span class="emoji">🌌</span><strong>Star Wars</strong> — hologram in R2-D2</div>
+    <div class="list-item"><span class="emoji">📜</span><strong>Avengers</strong> — Nick Fury at your door</div>
+  </div>
+  <p style="font-size:32px; margin-top:30px; color:#fbbf24;">And in <span class="highlight">Acts 13?</span></p>
+  <p style="font-size:30px; margin-top:10px; color:#e2e8f0; max-width:1000px;">The Holy Spirit speaks while the church is <span class="accent-teal">worshiping and fasting</span>.</p>
+</div>
+
+<!-- SLIDE 10: Transition -->
+<div class="slide slide-transition">
+  <span class="emoji-big">🎧</span>
+  <h2 style="font-size:42px;">If God wanted to give YOU<br>a mission this week…</h2>
+  <p style="font-size:34px; margin-top:20px; max-width:1000px; color:#e2e8f0;">…would you actually be paying enough attention to <span class="highlight">hear</span> Him?</p>
+  <p style="font-size:28px; margin-top:30px; color:#94a3b8; font-style:italic;">That's what today's lesson is about.</p>
+</div>
+
+<!-- SLIDE 11: Scripture Acts 13:1-2 -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?w=1920&q=80');">
+  <h3 style="color:#fbbf24;">Acts 13:1-2</h3>
+  <blockquote>
+    "Now in the church at Antioch there were prophets and teachers… While they were worshiping the Lord and fasting, <span class="highlight">the Holy Spirit said</span>, 'Set apart for me Barnabas and Saul for the work to which I have called them.'"
+    <cite>— Acts 13:1-2 (NIV)</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 12: Scripture Acts 13:3-5 -->
+<div class="slide slide-scripture slide-image" style="background-image: url('https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=1920&q=80');">
+  <h3 style="color:#fbbf24;">Acts 13:3-5</h3>
+  <blockquote>
+    "So after they had fasted and prayed, they placed their hands on them and sent them off. <span class="highlight">The two of them, sent on their way by the Holy Spirit</span>, went down to Seleucia and sailed from there to Cyprus. When they arrived at Salamis, they proclaimed the word of God…"
+    <cite>— Acts 13:3-5 (NIV)</cite>
+  </blockquote>
+</div>
+
+<!-- SLIDE 13: Sermon Overview -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);">
+  <h3 style="color:#818cf8;">Elder Elton Lee</h3>
+  <h2 style="font-size:42px;">Your Mission in the Great Commission</h2>
+  <ul>
+    <li style="font-size:34px;"><span class="highlight">1)</span> The Holy Spirit Initiates God's Global Mission</li>
+    <li style="font-size:34px;"><span class="highlight">2)</span> The Church Responds — as Sender AND Sent</li>
+    <li style="font-size:34px;"><span class="highlight">3)</span> Your Mission: Learn → Discern → Confirm</li>
+  </ul>
+</div>
+
+<!-- SLIDE 14: From Acts 8 to Acts 13 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">Quick Recap from Last Week</h3>
+  <h2 style="font-size:38px;">From Scattered → Sending</h2>
+  <div class="chain">
+    <div class="chain-item">Acts 8: Persecution scatters believers</div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-item">They plant the Antioch church</div>
+  </div>
+  <div class="chain">
+    <div class="chain-item">Acts 13: Antioch sends Paul + Barnabas</div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-item" style="color:#86efac; border-color:rgba(134,239,172,0.3); background:rgba(134,239,172,0.1);">Gospel goes to the ends of the earth</div>
+  </div>
+  <p style="font-size:28px; margin-top:30px; color:#94a3b8; max-width:1000px;">The persecuted became the senders. <span class="highlight">God writes the best comeback stories.</span></p>
+</div>
+
+<!-- SLIDE 15: Key Idea 1 -->
+<div class="slide slide-keyidea">
+  <h3>Key Idea 1</h3>
+  <h2>The Holy Spirit Initiates God's Mission</h2>
+  <ul>
+    <li>The church wasn't in a strategy meeting — they were <span class="highlight">worshiping and fasting</span></li>
+    <li>The Holy Spirit's fingerprints are <span class="highlight">everywhere</span> in Acts (13:4, 13:9, 16:6-9)</li>
+    <li>God already has a plan — we just need to <span class="accent-teal">find our place in it</span></li>
+    <li>"God is always calling — <span class="highlight">are we responding?</span>"</li>
+  </ul>
+</div>
+
+<!-- SLIDE 16: Listening + Responding -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #6b2163 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">Two-Part Test</h3>
+  <h2 style="font-size:42px;">Are You Actually Listening?<br>Are You Actually Responding?</h2>
+  <ul>
+    <li>Listening: put down the <span class="highlight">5x2 inch screen</span> long enough to hear</li>
+    <li>Responding: don't <span class="accent-red">ghost God</span> when His call is uncomfortable</li>
+    <li>"Sometimes His calling is costly. <span class="accent-teal">That's the point of being a living sacrifice.</span>"</li>
+  </ul>
+</div>
+
+<!-- SLIDE 17: Key Idea 2 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0c4a6e 100%);">
+  <h3 style="color:#7dd3fc;">Key Idea 2</h3>
+  <h2>The Church Responds: Sender AND Sent</h2>
+  <p style="font-size:30px; margin-top:10px; color:#cbd5e1; max-width:1000px;">The Holy Spirit initiates. The Church responds — in <span class="highlight">two roles</span>.</p>
+</div>
+
+<!-- SLIDE 18: Sender -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);">
+  <h3 style="color:#86efac;">The Church as SENDER</h3>
+  <h2>Antioch gave THREE things:</h2>
+  <ul>
+    <li>💰 <span class="highlight">Resources</span> — Antioch was wealthy. They gave generously.</li>
+    <li>💔 <span class="highlight">Their best people</span> — Barnabas + Paul, no leftovers</li>
+    <li>🙏 <span class="highlight">Prayer + encouragement</span> — they backed their missionaries</li>
+  </ul>
+  <p style="font-size:26px; margin-top:30px; color:#94a3b8; max-width:1000px;">ECC parallel: ~$500K/yr, 40+ long-term missionaries, 17 countries, 7 from ECC. Mission Fund needs YOUR earmarked giving.</p>
+</div>
+
+<!-- SLIDE 19: Sent -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #6b2163 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">The Church as SENT</h3>
+  <h2>Attributes of "the Sent":</h2>
+  <div class="list-grid">
+    <div class="list-item"><span class="emoji">🎯</span><strong>Missional</strong> — share with anyone</div>
+    <div class="list-item"><span class="emoji">📅</span><strong>Available</strong> — God's agenda</div>
+    <div class="list-item"><span class="emoji">🔄</span><strong>Flexible</strong> — drop your plans</div>
+    <div class="list-item"><span class="emoji">✋</span><strong>Willing</strong> — say yes</div>
+    <div class="list-item" style="grid-column:1/-1; text-align:center;"><span class="emoji">💝</span><strong>Servant heart — selfless</strong> (like Paul: beaten, jailed, faithful)</div>
+  </div>
+</div>
+
+<!-- SLIDE 20: Plot Twist Paul -->
+<div class="slide slide-transition" style="background: linear-gradient(135deg, #1c1917 0%, #44403c 50%, #1c1917 100%);">
+  <h3 style="color:#fcd34d; font-size:30px;">Plot Twist</h3>
+  <h2 style="font-size:42px;">Paul used to be a <span class="highlight">persecutor</span>.</h2>
+  <p style="font-size:30px; margin-top:20px; max-width:1000px; color:#e2e8f0;">He was part of the very persecution that scattered believers to Antioch — the church that's now <span class="accent-teal">sending him out</span>.</p>
+  <blockquote style="border-left-color:#86efac; max-width:1000px; font-size:32px; margin-top:30px;">
+    "He is a chosen instrument of mine to carry my name before the Gentiles and kings…"
+    <cite>— Acts 9:15</cite>
+  </blockquote>
+  <p style="font-size:28px; margin-top:20px; color:#94a3b8;">If God can use Paul, He can use <span class="highlight">you</span>.</p>
+</div>
+
+<!-- SLIDE 21: Philippians 1:21 -->
+<div class="slide slide-transition">
+  <blockquote style="border-left-color:#fbbf24; max-width:1100px; font-size:42px;">
+    "For to me, to live is Christ and to die is gain."
+    <cite>— Philippians 1:21</cite>
+  </blockquote>
+  <p style="font-size:30px; margin-top:30px; color:#94a3b8; max-width:900px;">Paul fully embodied the <span class="highlight">surrendered life</span>.</p>
+</div>
+
+<!-- SLIDE 22: Key Idea 3 -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);">
+  <h3 style="color:#818cf8;">Key Idea 3</h3>
+  <h2>Your Mission in the Great Commission</h2>
+  <ul>
+    <li><span class="highlight">All</span> are called to the Great Commission</li>
+    <li><span class="highlight">Not all</span> are called to cross-cultural missions</li>
+    <li>Start <span class="accent-teal">local</span> — but don't stop there</li>
+    <li>"The Great Commission is not the Great <span class="accent-red">Suggestion</span>." — Rick Warren</li>
+  </ul>
+</div>
+
+<!-- SLIDE 23: Demystifying Calling -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0c4a6e 100%);">
+  <h3 style="color:#7dd3fc;">Demystifying "Calling"</h3>
+  <h2 style="font-size:38px;">Three Steps to Find Yours</h2>
+  <div class="step-card">
+    <div class="step-num">Step 1</div>
+    <div class="step-title">📖 LEARN</div>
+    <div class="step-body">Posture of a student. Explore what God is doing. Take a class, browse joshuaproject.net, attend a missions conference.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">Step 2</div>
+    <div class="step-title">🧭 DISCERN</div>
+    <div class="step-body">Look at: Passion · Gifting · Opportunity · Prayer · Wise counsel. What's God wired you for?</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">Step 3</div>
+    <div class="step-title">✅ CONFIRM</div>
+    <div class="step-body">Try it. Watch for the Holy Spirit and others to confirm. Pastor Steve Moy was already pastoring before he was ordained.</div>
+  </div>
+</div>
+
+<!-- SLIDE 24: 5 Discern Questions -->
+<div class="slide slide-keyidea" style="background: linear-gradient(135deg, #4a1942 0%, #6b2163 50%, #4a1942 100%);">
+  <h3 style="color:#f0abfc;">5 Discern Questions</h3>
+  <h2 style="font-size:38px;">Ask Yourself…</h2>
+  <div class="list-grid">
+    <div class="list-item"><span class="emoji">🔥</span><strong>Passion</strong> — Do I care?</div>
+    <div class="list-item"><span class="emoji">🎁</span><strong>Gifting</strong> — Am I wired for it?</div>
+    <div class="list-item"><span class="emoji">🚪</span><strong>Opportunity</strong> — Is a door opening?</div>
+    <div class="list-item"><span class="emoji">🙏</span><strong>Prayer + Spirit</strong> — Am I asking?</div>
+    <div class="list-item" style="grid-column:1/-1; text-align:center;"><span class="emoji">👴</span><strong>Wise Counsel</strong> — What do mature believers see in me?</div>
+  </div>
+</div>
+
+<!-- SLIDE 25: Rick Warren Quote -->
+<div class="slide slide-transition" style="background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%);">
+  <h3 style="color:#94a3b8; font-size:28px;">Pastor Rick Warren</h3>
+  <blockquote style="border-left-color:#fbbf24; max-width:1100px; font-size:36px;">
+    "A great commitment to the <span class="highlight">Great Commandment</span> and the <span class="highlight">Great Commission</span> will make you a great Christian."
+  </blockquote>
+  <p style="font-size:28px; margin-top:30px; color:#94a3b8; max-width:900px;">Love God + love others + go and make disciples = <span class="highlight">a life that matters</span>.</p>
+</div>
+
+<!-- SLIDE 26: Video -->
+<div class="slide slide-video">
+  <h3 style="color:#c4b5fd;">Recommended Video (~10 min)</h3>
+  <h2 style="font-size:36px; margin-bottom:30px;">BibleProject: Acts 13-28 Overview</h2>
+  <a href="https://www.youtube.com/watch?v=Z6Yj5R3pqM4" target="_blank" class="video-thumb" onclick="event.stopPropagation();">
+    <img src="https://img.youtube.com/vi/Z6Yj5R3pqM4/maxresdefault.jpg" alt="BibleProject Acts 13-28">
+    <div class="play-btn">
+      <svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+    </div>
+  </a>
+  <p class="video-label">Click to open — covers Paul's missionary journeys, starting from Acts 13</p>
+</div>
+
+<!-- SLIDE 27: Key Takeaway -->
+<div class="slide slide-transition">
+  <h3 style="color:#fbbf24; font-size:28px; letter-spacing:2px; text-transform:uppercase;">The Bottom Line</h3>
+  <blockquote style="border-left-color:#fbbf24; max-width:1100px; font-size:36px;">
+    The Holy Spirit <span class="highlight">initiates</span>.<br>
+    The Church <span class="highlight">responds</span> — as Sender and as Sent.<br><br>
+    Your mission is real. Find it through <span class="accent-amber">Learn → Discern → Confirm</span>.
+  </blockquote>
+  <p style="font-size:32px; margin-top:30px; color:#e2e8f0;">God already has a plan.</p>
+  <p style="font-size:36px; margin-top:10px; font-weight:900; color:#86efac;">You just need to find your place in it.</p>
+</div>
+
+<!-- SLIDE 28: Transition to Small Groups -->
+<div class="slide slide-title">
+  <span class="emoji-big">💬</span>
+  <h1>Small Group Time</h1>
+  <p class="subtitle">Split into groups of 4-5 with a leader</p>
+  <p style="font-size:28px; color:#818cf8; margin-top:20px;">No judgment zone. Share honestly. Ask questions. Listen to each other.</p>
+</div>
+
+<!-- Counter -->
+<div id="counter"></div>
+<div id="hint">Press F for fullscreen | ← → to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  showSlide(0);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); showSlide(current - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    showSlide(current + 1);
+  });
+</script>
+</body>
+</html>
